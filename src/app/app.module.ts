@@ -3,7 +3,8 @@ import '../polyfills';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
+ 
+import { NgxElectronModule } from 'ngx-electron';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxElectronModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
