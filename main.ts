@@ -1,7 +1,7 @@
 import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-import { Products } from "./electron/sample";
+import { Products } from "./electron/ipc/sample";
 
 let win, serve;
 const args = process.argv.slice(1);

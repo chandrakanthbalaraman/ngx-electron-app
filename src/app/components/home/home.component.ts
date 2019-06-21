@@ -8,12 +8,15 @@ import { ElectronService } from 'ngx-electron';
 })
 export class HomeComponent implements OnInit {
 
+  products: Array<string> = [];
   constructor(
     private _electronService: ElectronService
   ) { }
 
   ngOnInit() {
     this._electronService.ipcRenderer.on('get-data-replay', (event, args) => {
+
+      this.products = args;
       console.log("eve", event);
       console.log("args", args);
     });

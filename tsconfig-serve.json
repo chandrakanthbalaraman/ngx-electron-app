@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -17,7 +17,8 @@
     ]
   },
   "include": [
-    "main.ts"
+    "main.ts",
+    "src/electron/**/*.ts"
   ],
   "exclude": [
     "node_modules",
