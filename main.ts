@@ -1,6 +1,7 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import { Products } from "./electron/sample";
 
 let win, serve;
 const args = process.argv.slice(1);
@@ -71,6 +72,10 @@ try {
     if (win === null) {
       createWindow();
     }
+  });
+
+  ipcMain.on('get-data', (event, arg) => {
+    event.sender.send('get-data-replay', Products);
   });
 
 } catch (e) {
