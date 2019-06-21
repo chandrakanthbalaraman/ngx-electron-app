@@ -17,8 +17,7 @@
     "!_config.yml",
     "!karma.conf.js",
     "!tsconfig.json",
-    "!tslint.json",
-    "src/electron/**/*"
+    "!tslint.json"
   ],
   "win": {
     "icon": "dist",

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone  } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
+const nunjucks = require('nunjucks');
 
 @Component({
   selector: 'app-home',
@@ -8,18 +9,14 @@ import { ElectronService } from 'ngx-electron';
 })
 export class HomeComponent implements OnInit {
 
-  products: Array<string> = [];
+  compiledData: string;
   constructor(
-    private _electronService: ElectronService
+    private _electronService: ElectronService,
+    private zone: NgZone
   ) { }
 
   ngOnInit() {
-    this._electronService.ipcRenderer.on('get-data-replay', (event, args) => {
-
-      this.products = args;
-      console.log("eve", event);
-      console.log("args", args);
-    });
+    
   }
 
   showDialog() {
@@ -38,7 +35,13 @@ export class HomeComponent implements OnInit {
   }
 
   showIPC() {
-    this._electronService.ipcRenderer.send('get-data');
-
+    
+    nunjucks.configure({ autoescape: true });
+    nunjucks.renderString('Hello {{ username }}', { username: 'James' },(err,resp)=>{
+      
+      this.zone.run(() => {
+        this.compiledData = resp;
+      });
+    });
   }
 }
