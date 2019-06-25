@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { generateProject } from '@assets/wizard/ngx/config-project/generate';
+import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
 var mkdirp = require('mkdirp');
 var nunjucks = require('nunjucks');
-var async = require('async');
+var asyncJS = require('async');
 var fs = require('fs');
+var path = require('path');
 
 @Injectable({
     providedIn: 'root'
@@ -12,14 +14,15 @@ export class ProjectService {
     generateProject(dirData) {
         generateProject.appInfo[0].name = 'app';
         return new Promise((resolve, reject) => {
-            async.forEach(generateProject.appInfo,function(item,loopCb){
-                if(this.makeDir(dirData,item,reqObj)==undefined){
+            asyncJS.forEach(generateProject.appInfo, (item, loopCb) => {
+                let makeDirResp = this.makeDir(dirData, item, null)
+                if(makeDirResp==undefined){
                     loopCb();
                 }
-            },function(err,resp){
-                if(err){
+            }, function (err, resp) {
+                if (err) {
                     reject(err);
-                }else{
+                } else {
                     resolve(resp);
                 }
             })
@@ -27,71 +30,59 @@ export class ProjectService {
     }
 
 
-    makeDir(dir,data,reqObj){
+   
+    makeDir(dir, data, reqObj): any {
         if (typeof data == typeof {} && Array.isArray(data) == true) {
-            for(let obj of data){
-                this.makeDir(dir, obj,reqObj)   
+            for (let obj of data) {
+               this.makeDir(dir, obj, reqObj);
             }
-            
-        }else if(typeof data == typeof {} && Array.isArray(data) == false){
-            this.createIt(dir,data,reqObj,function(err,resp){
-                if(resp.hasOwnProperty('dir')){
-                    this.makeDir(dir+'/'+resp.name, resp.dir,reqObj)   
+
+        } else if (typeof data == typeof {} && Array.isArray(data) == false) {
+            this.createIt(dir, data, reqObj, (err, resp) => {
+                if (resp.hasOwnProperty('dir')) {
+                    this.makeDir(dir + '/' + resp.name, resp.dir, reqObj);
                 }
             })
         }
-        
     }
 
-    createIt(dir,obj,reqObj,fbCb){
-        var dirData = dir+'/'+obj.name;
-        console.log("dirData",dirData);
-        async.waterfall([
-            function(callback){
-                mkdirp(dirData, function (err,resp) {
-                    if (err) return callback(err);
-                    else{
-                        callback(null,obj)    
+    createIt(dir, obj, reqObj, fbCb) {
+        var dirData = path.resolve(dir + '/' + obj.name);
+        mkdirp.sync(dirData);
+        
+        if (obj.hasOwnProperty('file')) {
+            nunjucks.configure({ autoescape: true });
+            asyncJS.eachSeries(obj.file, (item, loopCb) => {
+                // if (templatePath.hasOwnProperty(item.type)) {
+                //     console.log("templatePath[item.type]['template']",templatePath[item.type]['template']);
+                // }
+                // loopCb();
+
+                if(item.name){
+                    if(item.hasOwnProperty('type')){
+                        let content = nunjucks.render(templatePath[item.type]['template'],reqObj);
+                        fs.writeFileSync(dirData+"/"+item.name, content);
+                        loopCb();
+                    }else{
+                        let content = ''
+                        fs.writeFileSync(dirData+"/"+item.name, content);
+                        loopCb();
                     }
-                });
-            },
-            function(obj,callback){
-                if(obj.hasOwnProperty('file')){
-                    nunjucks.configure({ autoescape: true });
-                    async.eachSeries(obj.file, function iterator(item, loopCb) {
-                        if(item.name){
-                            if(item.hasOwnProperty('type')){
-                                let content = nunjucks.render(this.configData[item.type]['template'],reqObj);
-                                fs.writeFile(dirData+"/"+item.name, content, function(err,resp){
-                                    loopCb();
-                                    
-                                });
-                            }else{
-                                let content = ''
-                                fs.writeFile(dirData+"/"+item.name, content, function(err,resp){
-                                    loopCb();
-                                });
-                            }
-                        }else{
-                            loopCb();
-                        }
-                        
-                      }, function(err,resp) {
-                        if(err){
-                            return callback(err);
-                        }else{
-                            return callback(null,obj);
-                        }
-                      });
                 }else{
-                    callback(null,obj);
+                    loopCb();
                 }
-            }
-        ], function (err, result) {
-            fbCb(err,result);
-        });
-        
-        
-        
+
+            }, (err, resp) => {
+                if (err) {
+                    fbCb(err);
+                } else {
+                    fbCb(null, obj);
+                }
+            });
+        } else {
+            fbCb(null, obj);
+        }
+
+
     }
 }

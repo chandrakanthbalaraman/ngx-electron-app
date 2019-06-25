@@ -1,32 +1,32 @@
 export const templatePath = {
     'component': {
-        'template': 'assets/nunjucks/component/component.html'
+        'template': 'assets/wizard/ngx/templates/component/component.html'
     },
     'module': {
-        'template': 'assets/nunjucks/module/module.html'
+        'template': 'assets/wizard/ngx/templates/module/module.html'
     },
     'interface': {
-        'template': 'assets/nunjucks/interface/interface.html'
+        'template': 'assets/wizard/ngx/templates/interface/interface.html'
     },
     'service': {
-        'template': 'assets/nunjucks/service/service.html'
+        'template': 'assets/wizard/ngx/templates/service/service.html'
     },
     'gitignore': {
-        'template': 'assets/nunjucks/setup/gitignore.html'
+        'template': 'assets/wizard/ngx/templates/setup/gitignore.html'
     },
     'environment': {
-        'template': 'assets/nunjucks/setup/environment.html'
+        'template': 'assets/wizard/ngx/templates/setup/environment.html'
     },
     'index': {
-        'template': 'assets/nunjucks/setup/index.html'
+        'template': 'assets/wizard/ngx/templates/setup/index.html'
     },
     'cli': {
-        'template': 'assets/nunjucks/setup/cli.html'
+        'template': 'assets/wizard/ngx/templates/setup/cli.html'
     },
     'package': {
-        'template': 'assets/nunjucks/setup/package.html'
+        'template': 'assets/wizard/ngx/templates/setup/package.html'
     },
     'tsconfig': {
-        'template': 'assets/nunjucks/setup/tsconfig.html'
+        'template': 'assets/wizard/ngx/templates/setup/tsconfig.html'
     }
 }

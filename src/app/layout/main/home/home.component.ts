@@ -26,11 +26,11 @@ export class HomeComponent implements OnInit {
     if (this._electronService.isElectronApp) {
       const { dialog } = this._electronService.remote;
       var fs = this._electronService.remote.require('fs');
-      dialog.showOpenDialog({ properties: ['openFile', 'openDirectory', 'multiSelections'] }, (data) => {
+      dialog.showOpenDialog({ properties: ['openDirectory'] }, (data) => {
         if (data) {
           let projectPath = path.resolve(data[0] + '/v1');
           console.log("projectPath", projectPath);
-          this.projectService.makeDir(projectPath).then(
+          this.projectService.generateProject(projectPath).then(
             (data: any) => {
               console.log("data", data);
             },
@@ -39,14 +39,6 @@ export class HomeComponent implements OnInit {
             }
           )
         }
-
-        // fs.readdir(data[0], function (err, items) {
-        //   console.log(items);
-
-        //   for (var i = 0; i < items.length; i++) {
-        //     console.log(items[i]);
-        //   }
-        // });
       })
     }
 
