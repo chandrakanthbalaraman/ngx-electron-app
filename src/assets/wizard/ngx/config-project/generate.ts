@@ -27,7 +27,24 @@ export const generateProject = {
 
                                         },
                                         {
-                                            "name": "_consts"
+                                            "name": "_consts",
+                                            "file":[
+                                                {
+                                                    "name":"app-url.const.ts"
+                                                },
+                                                {
+                                                    "name":"app-animate.const.ts"
+                                                },
+                                                {
+                                                    "name":"app-regex.const.ts"
+                                                },
+                                                {
+                                                    "name":"app-messages.const.ts"
+                                                },
+                                                {
+                                                    "name":"app-config.const.ts"
+                                                }
+                                            ]
 
                                         },
                                         {
@@ -35,7 +52,19 @@ export const generateProject = {
 
                                         },
                                         {
-                                            "name": "_modules"
+                                            "name": "_modules",
+                                            "file": [
+                                                {
+                                                    "name": "core.module.ts",
+                                                    "type": "module"
+
+                                                },
+                                                {
+                                                    "name": "shared.module.ts",
+                                                    "type": "module"
+
+                                                }
+                                            ]
 
                                         },
                                         {
@@ -63,6 +92,10 @@ export const generateProject = {
                                 {
                                     "name": "app.module.ts",
                                     "type": "module"
+
+                                },
+                                {
+                                    "name": "app.routing.ts"
 
                                 },
                                 {
@@ -107,10 +140,6 @@ export const generateProject = {
                                                 {
                                                     "name": "_components"
 
-                                                },
-                                                {
-                                                    "name": "_mixins"
-
                                                 }
                                             ]
 
@@ -120,7 +149,13 @@ export const generateProject = {
 
                                         },
                                         {
-                                            "name": "_utils"
+                                            "name": "_utils",
+                                            "dir": [
+                                                {
+                                                    "name": "_mixins"
+
+                                                }
+                                            ]
 
                                         },
 
