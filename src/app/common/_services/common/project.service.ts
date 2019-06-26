@@ -11,11 +11,14 @@ var path = require('path');
     providedIn: 'root'
 })
 export class ProjectService {
+    directoryArr:Array<string> = [];
     generateProject(dirData) {
         return new Promise((resolve, reject) => {
             asyncJS.forEach(generateProject.appInfo, (item, loopCb) => {
-                let makeDirResp = this.makeDir(dirData, item, null)
-                if(makeDirResp==undefined){
+                if(this.makeDir(dirData, item, null)==undefined){
+                    console.log("project paths",this.directoryArr.map((item)=>{
+                            return item.replace(dirData,'');
+                    }));
                     loopCb();
                 }
             }, function (err, resp) {
@@ -47,8 +50,8 @@ export class ProjectService {
 
     createIt(dir, obj, reqObj, fbCb) {
         var dirData = path.resolve(dir + '/' + obj.name);
+        this.directoryArr.push(dirData);
         mkdirp.sync(dirData);
-        
         if (obj.hasOwnProperty('file')) {
             nunjucks.configure({ autoescape: true });
             asyncJS.eachSeries(obj.file, (item, loopCb) => {

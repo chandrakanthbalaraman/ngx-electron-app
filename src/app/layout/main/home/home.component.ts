@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
     private _electronService: ElectronService,
     private zone: NgZone,
     private projectService: ProjectService
+    
   ) { }
 
   ngOnInit() {
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
       var fs = this._electronService.remote.require('fs');
       dialog.showOpenDialog({ properties: ['openDirectory'] }, (data) => {
         if (data) {
-          let projectPath = path.resolve(data[0] + '/v1');
+          let projectPath = data[0];
           console.log("projectPath", projectPath);
           this.projectService.generateProject(projectPath).then(
             (data: any) => {

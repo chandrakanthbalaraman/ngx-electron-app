@@ -169,17 +169,7 @@ export var  generateProject = {
 
                                 },
                                 {
-                                    "name": "img",
-                                    "dir": [
-                                        {
-                                            "name": "logo"
-
-                                        },
-                                        {
-                                            "name": "user"
-
-                                        }
-                                    ]
+                                    "name": "images"
 
                                 }
                             ]
