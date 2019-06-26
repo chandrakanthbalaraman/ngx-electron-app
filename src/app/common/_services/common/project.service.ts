@@ -12,7 +12,6 @@ var path = require('path');
 })
 export class ProjectService {
     generateProject(dirData) {
-        generateProject.appInfo[0].name = 'app';
         return new Promise((resolve, reject) => {
             asyncJS.forEach(generateProject.appInfo, (item, loopCb) => {
                 let makeDirResp = this.makeDir(dirData, item, null)
@@ -53,11 +52,6 @@ export class ProjectService {
         if (obj.hasOwnProperty('file')) {
             nunjucks.configure({ autoescape: true });
             asyncJS.eachSeries(obj.file, (item, loopCb) => {
-                // if (templatePath.hasOwnProperty(item.type)) {
-                //     console.log("templatePath[item.type]['template']",templatePath[item.type]['template']);
-                // }
-                // loopCb();
-
                 if(item.name){
                     if(item.hasOwnProperty('type')){
                         let content = nunjucks.render(templatePath[item.type]['template'],reqObj);

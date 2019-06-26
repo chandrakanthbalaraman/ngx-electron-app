@@ -1,4 +1,4 @@
-export const generateProject = {
+export var  generateProject = {
     appInfo: [
         {
             "name": "generate",
