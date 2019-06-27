@@ -68,6 +68,7 @@
     "zone.js": "0.8.29"
   },
   "dependencies": {
+    "@ng-select/ng-select": "^2.20.1",
     "async": "^3.1.0",
     "bootstrap": "^4.3.1",
     "electron-store": "^4.0.0",

@@ -1,78 +1,116 @@
 export var  generateProject = {
     appInfo: [
         {
-            "name": "generate",
-            "dir": [
+            "label": "generate",
+            "data": "generate",
+            "type": "dir",
+            "children": [
                 {
-                    "name": "src",
-                    "dir": [
+                    "label": "src",
+                    "data": "src",
+                    "type":"dir",
+                    "children": [
                         {
-                            "name": "app",
-                            "dir": [
+                            "label": "app",
+                            "data": "app",
+                            "type":"dir",
+                            "children": [
                                 {
-                                    "name": "common",
-                                    "dir": [
+                                    "label": "common",
+                                    "data": "common",
+                                    "type":"dir",
+                                    "children": [
                                         {
-                                            "name": "_components"
+                                            "label": "_components",
+                                            "data": "_components",
+                                            "type":"dir",
 
 
                                         },
                                         {
-                                            "name": "_directives"
-
-
-                                        },
-                                        {
-                                            "name": "_interfaces"
+                                            "label": "_directives",
+                                            "data": "_directives",
+                                            "type":"dir",
 
                                         },
                                         {
-                                            "name": "_consts",
-                                            "file":[
+                                            "label": "_interfaces",
+                                            "data": "_interfaces",
+                                            "type":"dir",
+
+                                        },
+                                        {
+                                            "label": "_consts",
+                                            "data": "_consts",
+                                            "type":"dir",
+                                            "children":[
                                                 {
-                                                    "name":"app-url.const.ts"
+                                                    "label": "app-url.const.ts",
+                                                    "data": "app-url.const.ts",
+                                                    "type":"file",
                                                 },
                                                 {
-                                                    "name":"app-animate.const.ts"
+                                                    "label": "app-animate.const.ts",
+                                                    "data": "app-animate.const.ts",
+                                                    "type":"file",
                                                 },
                                                 {
-                                                    "name":"app-regex.const.ts"
+                                                    "label": "app-regex.const.ts",
+                                                    "data": "app-regex.const.ts",
+                                                    "type":"file",
+
                                                 },
                                                 {
-                                                    "name":"app-messages.const.ts"
+                                                    "label": "app-messages.const.ts",
+                                                    "data": "app-messages.const.ts",
+                                                    "type":"file",
                                                 },
                                                 {
-                                                    "name":"app-config.const.ts"
+                                                    "label": "app-config.const.ts",
+                                                    "data": "app-config.const.ts",
+                                                    "type":"file",
                                                 }
                                             ]
 
                                         },
                                         {
-                                            "name": "_functions"
+                                            "label": "_functions",
+                                            "data": "_functions",
+                                            "type":"dir",
 
                                         },
                                         {
-                                            "name": "_modules",
-                                            "file": [
+                                            "label": "_modules",
+                                            "data": "_modules",
+                                            "type":"dir",
+                                            "children": [
                                                 {
-                                                    "name": "core.module.ts",
-                                                    "type": "module"
+                                                    "label": "core.module.ts",
+                                                    "data": "core.module.ts",
+                                                    "type":"file",
+                                                    "templateType": "module"
 
                                                 },
                                                 {
-                                                    "name": "shared.module.ts",
-                                                    "type": "module"
+                                                    "label": "shared.module.ts",
+                                                    "data": "shared.module.ts",
+                                                    "type":"file",
+                                                    "templateType": "module"
 
                                                 }
                                             ]
 
                                         },
                                         {
-                                            "name": "_pipes"
+                                            "label": "_pipes",
+                                            "data": "_pipes",
+                                            "type":"dir",
 
                                         },
                                         {
-                                            "name": "_services"
+                                            "label": "_services",
+                                            "data": "_services",
+                                            "type":"dir",
 
                                         }
 
@@ -80,91 +118,123 @@ export var  generateProject = {
 
                                 },
                                 {
-                                    "name": "main",
+                                    "label": "main",
+                                    "data": "main",
+                                    "type":"dir",
+                                },
+                                {
+                                    "label": "app.component.ts",
+                                    "data": "app.component.ts",
+                                    "type":"file",
+                                    "templateType": "component"
+                                },
+                                {
+                                    "label": "app.module.ts",
+                                    "data": "app.module.ts",
+                                    "type":"file",
+                                    "templateType": "module"
+
+                                },
+                                {
+                                    "label": "app.routing.ts",
+                                    "data": "app.routing.ts",
+                                    "type":"file",
+
+                                },
+                                {
+                                    "label": "app.component.scss",
+                                    "data": "app.component.scss",
+                                    "type":"file",
+
+
+                                },
+                                {
+                                    "label": "app.component.html",
+                                    "data": "app.component.html",
+                                    "type":"file",
                                 }
 
-                            ],
-                            "file": [
-                                {
-                                    "name": "app.component.ts",
-                                    "type": "component"
-                                },
-                                {
-                                    "name": "app.module.ts",
-                                    "type": "module"
-
-                                },
-                                {
-                                    "name": "app.routing.ts"
-
-                                },
-                                {
-                                    "name": "app.component.scss"
-
-
-                                },
-                                {
-                                    "name": "app.component.html"
-
-
-                                }
                             ]
                         },
                         {
-                            "name": "assets",
-                            "dir": [
+                            "label": "assets",
+                            "data": "assets",
+                            "type":"dir",
+                            "children": [
                                 {
-                                    "name": "partials",
-                                    "dir": [
+                                    "label": "partials",
+                                    "data": "partials",
+                                    "type":"dir",
+                                    "children": [
                                         {
-                                            "name": "_base",
-                                            "file": [
+                                            "label": "_base",
+                                            "data": "_base",
+                                            "type":"dir",
+                                            "children": [
                                                 {
-                                                    "name": "base.scss"
+                                                    "label": "base.scss",
+                                                    "data": "base.scss",
+                                                    "type":"file",
 
                                                 },
                                                 {
-                                                    "name": "typography.scss"
+                                                    "label": "typography.scss",
+                                                    "data": "typography.scss",
+                                                    "type":"file",
 
                                                 },
                                                 {
-                                                    "name": "colors.scss"
+                                                    "label": "colors.scss",
+                                                    "data": "colors.scss",
+                                                    "type":"file",
 
                                                 }
                                             ]
 
                                         },
                                         {
-                                            "name": "_modules",
-                                            "dir": [
+                                            "label": "_modules",
+                                            "data": "_modules",
+                                            "type":"dir",
+                                            "children": [
                                                 {
-                                                    "name": "_components"
+                                                    "label": "_components",
+                                                    "data": "_components",
+                                                    "type":"dir",
 
                                                 }
                                             ]
 
                                         },
                                         {
-                                            "name": "_layouts"
+                                            "label": "_layouts",
+                                            "data": "_layouts",
+                                            "type":"dir",
+
 
                                         },
                                         {
-                                            "name": "_utils",
-                                            "dir": [
+                                            "label": "_utils",
+                                            "data": "_utils",
+                                            "type":"dir",
+                                            "children": [
                                                 {
-                                                    "name": "_mixins"
+                                                    "label": "_mixins",
+                                                    "data": "_mixins",
+                                                    "type":"dir",
+                                                    
 
                                                 }
                                             ]
 
                                         },
-
-                                    ],
-                                    "file": [
                                         {
-                                            "name": "global.scss"
+                                            "label": "app-style.scss",
+                                            "data": "app-style.scss",
+                                            "type":"file",
 
                                         }
+
                                     ]
 
                                 },
@@ -175,62 +245,86 @@ export var  generateProject = {
                             ]
                         },
                         {
-                            "name": "environments",
-                            "file": [
+                            "label": "environments",
+                            "data": "environments",
+                            "type":"dir",
+                            "children": [
                                 {
-                                    "name": "environment.ts",
-                                    "type": "environment"
+                                    "label": "environment.ts",
+                                    "data": "environment.ts",
+                                    "type":"file",
+                                    "templateType": "environment"
                                 },
                                 {
-                                    "name": "environment.prod.ts",
-                                    "type": "environment"
+                                    "label": "environment.prod.ts",
+                                    "data": "environment.prod.ts",
+                                    "type":"file",
+                                    "templateType": "environment"
                                 }
                             ]
-                        }
-                    ],
-                    "file": [
-                        {
-                            "name": "index.html",
-                            "type": "index"
                         },
                         {
-                            "name": "main.ts"
+                            "label": "index.html",
+                            "data": "index.html",
+                            "type":"file",
+                            "templateType": "index"
                         },
                         {
-                            "name": "polyfills.ts"
+                            "label": "main.ts",
+                            "data": "main.ts",
+                            "type":"file",
                         },
                         {
-                            "name": "styles.scss"
+                            "label": "polyfills.ts",
+                            "data": "polyfills.ts",
+                            "type":"file",
                         },
                         {
-                            "name": "tsconfig.app.json"
+                            "label": "styles.scss",
+                            "data": "styles.scss",
+                            "type":"file",
                         },
                         {
-                            "name": "typings.d.ts"
+                            "label": "tsconfig.app.json",
+                            "data": "tsconfig.app.json",
+                            "type":"file",
+                        },
+                        {
+                            "label": "typings.d.ts",
+                            "data": "typings.d.ts",
+                            "type":"file",
                         }
                     ]
 
-                }
-            ],
-            "file": [
-                {
-                    "name": ".gitignore",
-                    "type": "gitignore"
                 },
                 {
-                    "name": ".angular-cli.json",
-                    "type": "cli"
+                    "label": "gitignore",
+                    "data": "gitignore",
+                    "type":"file",
+                    "templateType": "gitignore"
                 },
                 {
-                    "name": "package.json",
-                    "type": "package"
+                    "label": ".angular-cli.json",
+                    "data": ".angular-cli.json",
+                    "type":"file",
+                    "templateType": "cli"
                 },
                 {
-                    "name": "tsconfig.json",
-                    "type": "tsconfig"
+                    "label": "package.json",
+                    "data": "package.json",
+                    "type":"file",
+                    "templateType": "package"
                 },
                 {
-                    "name": "README.md"
+                    "label": "tsconfig.json",
+                    "data": "tsconfig.json",
+                    "type":"file",
+                    "templateType": "tsconfig"
+                },
+                {
+                    "label": "README.md",
+                    "data": "README.md",
+                    "type":"file",
                 }
             ]
         }
@@ -238,7 +332,7 @@ export var  generateProject = {
     basicLayout: [
 
         {
-            "dir": [
+            "children": [
                 {
                     "name": "basic-layout"
 
