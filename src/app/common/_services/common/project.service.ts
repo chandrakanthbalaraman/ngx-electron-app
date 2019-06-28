@@ -82,4 +82,17 @@ export class ProjectService {
 
 
     }
+
+    flattenNestedArray(dataArr,dir=''){
+        var result = [];
+        dataArr.forEach((a)=> {
+            a.path = dir+'/'+a.label;
+            const {label,data,path,id} = a;
+            result.push({label,data,path,id});
+            if (Array.isArray(a.children)) {
+               result = result.concat(this.flattenNestedArray(a.children,a.path));
+            }
+        });
+        return result;
+    }
 }

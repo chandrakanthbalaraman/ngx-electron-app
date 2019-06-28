@@ -239,7 +239,9 @@ export var  generateProject = {
 
                                 },
                                 {
-                                    "name": "images"
+                                    "label": "images",
+                                    "data": "_utils",
+                                    "type":"dir",
 
                                 }
                             ]
