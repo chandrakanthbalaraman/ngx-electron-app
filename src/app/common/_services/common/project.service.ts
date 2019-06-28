@@ -11,75 +11,41 @@ var path = require('path');
     providedIn: 'root'
 })
 export class ProjectService {
-    directoryArr:Array<string> = [];
-    generateProject(dirData) {
+    generateProject(dirData,flattenArr) {
         return new Promise((resolve, reject) => {
-            asyncJS.forEach(generateProject.appInfo, (item, loopCb) => {
-                if(this.makeDir(dirData, item, null)==undefined){
-                    console.log("project paths",this.directoryArr.map((item)=>{
-                            return item.replace(dirData,'');
-                    }));
+            asyncJS.forEach(flattenArr, (item, loopCb) => {
+               this.createIt(dirData,item,(err,resp)=>{
                     loopCb();
-                }
+               })
             }, function (err, resp) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(resp);
-                }
+                resolve(true);
             })
         })
     }
 
 
    
-    makeDir(dir, data, reqObj): any {
-        if (typeof data == typeof {} && Array.isArray(data) == true) {
-            for (let obj of data) {
-               this.makeDir(dir, obj, reqObj);
-            }
+  
 
-        } else if (typeof data == typeof {} && Array.isArray(data) == false) {
-            this.createIt(dir, data, reqObj, (err, resp) => {
-                if (resp.hasOwnProperty('dir')) {
-                    this.makeDir(dir + '/' + resp.name, resp.dir, reqObj);
-                }
-            })
-        }
-    }
-
-    createIt(dir, obj, reqObj, fbCb) {
-        var dirData = path.resolve(dir + '/' + obj.name);
-        this.directoryArr.push(dirData);
-        mkdirp.sync(dirData);
-        if (obj.hasOwnProperty('file')) {
-            nunjucks.configure({ autoescape: true });
-            asyncJS.eachSeries(obj.file, (item, loopCb) => {
-                if(item.name){
-                    if(item.hasOwnProperty('type')){
-                        let content = nunjucks.render(templatePath[item.type]['template'],reqObj);
-                        fs.writeFileSync(dirData+"/"+item.name, content);
-                        loopCb();
-                    }else{
-                        let content = ''
-                        fs.writeFileSync(dirData+"/"+item.name, content);
-                        loopCb();
-                    }
-                }else{
-                    loopCb();
-                }
-
-            }, (err, resp) => {
-                if (err) {
-                    fbCb(err);
-                } else {
-                    fbCb(null, obj);
-                }
+    createIt(dir, obj, fbCb) {
+        var dirPath = path.resolve(dir + obj.path);
+        console.log("dirPath",dirPath);
+        if(obj.type == 'dir'){
+            mkdirp(dirPath,(err,resp)=>{
+                fbCb(err,resp);
             });
-        } else {
-            fbCb(null, obj);
+        }else if(obj.type == 'file'){
+            nunjucks.configure({ autoescape: true });
+                if(obj.label ){
+                    let content = obj.hasOwnProperty('templateType') ? 
+                    nunjucks.render(templatePath[obj.templateType]['template']): ''
+                    fs.writeFile(dirPath, content,(err,resp)=>{
+                        fbCb(err,resp);
+                    });
+                    
+                }
         }
-
+        
 
     }
 
@@ -87,8 +53,7 @@ export class ProjectService {
         var result = [];
         dataArr.forEach((a)=> {
             a.path = dir+'/'+a.label;
-            const {label,data,path,id} = a;
-            result.push({label,data,path,id});
+            result.push(a);
             if (Array.isArray(a.children)) {
                result = result.concat(this.flattenNestedArray(a.children,a.path));
             }

@@ -1,6 +1,4 @@
 <button class="btn btn-primary" (click)="showDialog()">Open Dialog</button>
-<button class="btn btn-success" (click)="CompileString()">Compile Template</button>
 <ng-container *ngIf="files.length>0">
     <p-tree [value]="files" [loading]="loading"></p-tree>
 </ng-container>
-<p>{{compiledData}}</p>
