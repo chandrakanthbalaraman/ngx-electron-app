@@ -60,10 +60,10 @@ export class HomeComponent implements OnInit {
             item.id = index+1;
             return item;
           }));
-          this.zone.run(() => {
+          // this.zone.run(() => {
             this.files = generateProject.appInfo;
             this.loading = false;
-          });
+          // });
           // this.projectService.generateProject(projectPath).then(
           //   (data: any) => {
           //     console.log("data", data);
@@ -81,11 +81,11 @@ export class HomeComponent implements OnInit {
   CompileString() {
     if (this._electronService.isElectronApp) {
       nunjucks.configure({ autoescape: true });
-      nunjucks.render("assets/wizard/ngx/templates/modules/module.html", { username: 'James' }, (err, resp) => {
+      nunjucks.render("assets/wizard/ngx/templates/module/module.html", { username: 'James' }, (err, resp) => {
 
-        this.zone.run(() => {
+        // this.zone.run(() => {
           this.compiledData = resp;
-        });
+        // });
       });
     }
 
