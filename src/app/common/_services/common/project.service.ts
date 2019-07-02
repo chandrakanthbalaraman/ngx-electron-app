@@ -32,6 +32,8 @@ export class ProjectService {
         console.log("dirPath",dirPath);
         if(obj.type == 'dir'){
             mkdirp(dirPath,(err,resp)=>{
+                console.log("err",err);
+                console.log("resp",resp);
                 fbCb(err,resp);
             });
         }else if(obj.type == 'file'){
