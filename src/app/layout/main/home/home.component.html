@@ -2,5 +2,7 @@
 <button class="btn btn-primary" (click)="mainLayout()">Create Main Layout</button>
 <button class="btn btn-primary" (click)="openExplorer()">Open In Explorer</button>
 <ng-container *ngIf="files.length>0">
-    <p-tree [value]="files" [loading]="loading" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event)"></p-tree>
+    <p-tree [value]="files" [loading]="loading" selectionMode="single" [(selection)]="selectedFile"
+        (onNodeSelect)="nodeSelect($event)"></p-tree>
 </ng-container>
+<h1 class="bg-blue">Hello Chandru</h1>
