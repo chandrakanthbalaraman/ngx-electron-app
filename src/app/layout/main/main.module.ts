@@ -14,15 +14,23 @@ const routes: Routes = [
         loadChildren: './home/home.module#HomeModule',
       },
       {
+        path: 'default',
+        loadChildren: './default/default.module#DefaultModule',
+      },
+      {
+        path: 'initial',
+        loadChildren: './initial/initial.module#InitialModule',
+      },
+      {
         path: '',
-        redirectTo: 'home'
+        redirectTo: 'initial'
 
       }
     ]
   },
   {
     path: '**',
-    redirectTo: 'page/home',
+    redirectTo: 'page/initial',
     pathMatch: 'full',
   }
 ]
