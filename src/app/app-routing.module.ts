@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'page/home',
+        redirectTo: 'page/initial',
         pathMatch: 'full',
     },
     {
@@ -13,7 +13,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'page/home'
+        redirectTo: 'page/initial'
     }
 ]
 
