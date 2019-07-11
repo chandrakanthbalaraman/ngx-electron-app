@@ -1,1 +1,22 @@
-<p>Initial</p>
+<div class="container">
+<section class="py-4 col-lg-8 offset-2">
+    <div class="card ">
+        <div class="card-header">
+            Module
+        </div>
+        <div class="card-body">
+            <ng-select
+                    #select
+                    [items]="mainModuleArr"
+                    [multiple]="true"
+                    bindLabel="name"
+                    [(ngModel)]="selectedModule">
+            </ng-select>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-primary" (click)="formModule()">Submit</button>
+        </div>
+    </div>
+</section>
+  
+</div>

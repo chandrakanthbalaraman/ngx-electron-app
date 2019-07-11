@@ -32,4 +32,20 @@ export class HelperService{
             return path.reverse().join("/");
         }
     }
+
+    static generateChildrenArr(moduleArr,keyToPick){
+        if(!_.isEmpty(moduleArr)){
+           return _.chain(moduleArr)
+                   .groupBy('package')
+                   .map((value, key)=> {
+                       return{
+                           package : key,
+                           lib: _.pluck(value,keyToPick)
+                       }
+                   })
+                   .value();
+        }
+        return null;
+
+    }
 }

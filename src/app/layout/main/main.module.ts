@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from '@app/layout/main/main.component';
 import { SharedModule } from '@app/common/_modules/shared.module';
+import { APP_CONFIG } from '@app/common/_const/app/app-config.const';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'page/initial',
+    redirectTo: APP_CONFIG.ROUTER.INITIAL_PAGE,
     pathMatch: 'full',
   }
 ]

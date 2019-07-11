@@ -1,5 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ElectronService } from 'ngx-electron';
+import { MAIN_MODULES_ARR } from '@app/common/_const/ngx/ngx-modules.const';
+import { HelperService } from '@app/common/_services/common/helper.service';
 
 @Component({
   selector: 'app-initial-comp',
@@ -8,7 +10,8 @@ import { ElectronService } from 'ngx-electron';
 })
 export class InitialComponent implements OnInit {
 
-  
+  mainModuleArr = MAIN_MODULES_ARR;
+  selectedModule:Array<any> = [];
   constructor(
     private _electronService: ElectronService,
     
@@ -18,6 +21,12 @@ export class InitialComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  formModule(){
+   
+    let modulePathArr = HelperService.generateChildrenArr(this.selectedModule,'name');
+    HelperService.loggerService("modulePathArr",modulePathArr);
+  }
 
 
 
