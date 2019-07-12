@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
         if (data) {
           this.projectPath = data[0];
           console.log("projectPath", this.projectPath);
-          let pathFlattenArr = this.projectService.flattenNestedArray(generateProject.appInfo).map((item,index)=>{
+          let pathFlattenArr = HelperService.flattenNestedArray(generateProject.appInfo).map((item,index)=>{
             item.id = index+1;
             return item;
           });
@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
       ]
       
       let parentPath = "/"+HelperService.getParentPath(this.selectedFile);
-      let pathFlattenArr = this.projectService.flattenNestedArray(mainLayout,parentPath).map((item,index)=>{
+      let pathFlattenArr = HelperService.flattenNestedArray(mainLayout,parentPath).map((item,index)=>{
         item.id = index+1;
         return item;
       });

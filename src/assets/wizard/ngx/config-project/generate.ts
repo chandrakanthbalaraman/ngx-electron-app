@@ -118,8 +118,8 @@ export var  generateProject = {
 
                                 },
                                 {
-                                    "label": "main",
-                                    "data": "main",
+                                    "label": "layout",
+                                    "data": "layout",
                                     "type":"dir",
                                 },
                                 {

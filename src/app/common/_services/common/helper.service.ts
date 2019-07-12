@@ -1,5 +1,10 @@
 import { AppConfig } from "@env/environment";
+import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
 import * as _ from 'underscore';
+
+var nunjucks = require('nunjucks');
+nunjucks.configure({ autoescape: true });
+
 
 export class HelperService{
 
@@ -47,5 +52,33 @@ export class HelperService{
         }
         return null;
 
+    }
+
+
+    static nunjuckRender(path,renderData?:any){
+        if(path){
+            return nunjucks.render(path,renderData);
+        }
+        return null;
+    }
+
+    static flattenNestedArray(dataArr,dir=''){
+        var result = [];
+        dataArr.forEach((a)=> {
+            a.path = dir+'/'+a.label;
+            result.push(a);
+            if (Array.isArray(a.children)) {
+               result = result.concat(HelperService.flattenNestedArray(a.children,a.path));
+            }
+        });
+        return result;
+    }
+
+    static getTemplatePath(type){
+        if(type && templatePath.hasOwnProperty(type)){
+            return templatePath[type]['template'];
+        }
+        return null;
+        
     }
 }

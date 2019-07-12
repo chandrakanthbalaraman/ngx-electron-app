@@ -1,0 +1,17 @@
+{% macro packages(packageArr) -%} 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+{% for item in packageArr -%}
+import { {% for lib in item.lib %}{{lib}}{% if loop.last == false %},{% endif %}{% endfor %} } from '{{item.package}}';
+{% endfor %}
+{%- endmacro %}
+
+{%- macro moduleImports(packageArr) -%} 
+BrowserModule,
+    {% for item in packageArr -%}
+    {%- set isParentLast = loop.last -%}
+    {% for lib in item.lib -%}
+    {{lib}}{% if loop.last == false or isParentLast == false %},{% endif %}
+    {% endfor %} 
+    {%- endfor %}
+{%- endmacro -%}

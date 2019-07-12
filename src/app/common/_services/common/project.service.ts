@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { generateProject } from '@assets/wizard/ngx/config-project/generate';
-import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
+
+import { HelperService } from '@app/common/_services/common/helper.service';
 var mkdirp = require('mkdirp');
-var nunjucks = require('nunjucks');
+
 var asyncJS = require('async');
 var fs = require('fs');
 var path = require('path');
@@ -37,10 +37,10 @@ export class ProjectService {
                 fbCb(err,resp);
             });
         }else if(obj.type == 'file'){
-            nunjucks.configure({ autoescape: true });
+            
                 if(obj.label ){
                     let content = obj.hasOwnProperty('templateType') ? 
-                    nunjucks.render(templatePath[obj.templateType]['template']): ''
+                    HelperService.nunjuckRender(HelperService.getTemplatePath(obj.templateType)): ''
                     fs.writeFile(dirPath, content,(err,resp)=>{
                         fbCb(err,resp);
                     });
@@ -51,15 +51,5 @@ export class ProjectService {
 
     }
 
-    flattenNestedArray(dataArr,dir=''){
-        var result = [];
-        dataArr.forEach((a)=> {
-            a.path = dir+'/'+a.label;
-            result.push(a);
-            if (Array.isArray(a.children)) {
-               result = result.concat(this.flattenNestedArray(a.children,a.path));
-            }
-        });
-        return result;
-    }
+    
 }

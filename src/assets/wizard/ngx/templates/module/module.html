@@ -1,20 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
-
+{% import "assets/wizard/ngx/templates/macros/modules.html" as packageHtml %}
+{{packageHtml.packages(modulePackageArr)}}
 import { AppComponent } from './app.component';
-
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    FormsModule
+    {{packageHtml.moduleImports(modulePackageArr)}}
   ],
-  providers: [],
+  providers: []{% if isMainModule %},{% endif %}
+  {% if isMainModule -%}
   bootstrap: [AppComponent]
+  {%- endif %}
 })
-export class AppModule { }
+export class {% if moduleName %}{{moduleName | capitalize}}{% else %}App{% endif %}Module { }

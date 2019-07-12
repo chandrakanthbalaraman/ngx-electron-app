@@ -26,6 +26,24 @@ export class InitialComponent implements OnInit {
    
     let modulePathArr = HelperService.generateChildrenArr(this.selectedModule,'name');
     HelperService.loggerService("modulePathArr",modulePathArr);
+    let mainModule = [
+        {
+          "label": "app.module.ts",
+          "data": "app.module.ts",
+          "type":"file",
+          "templateType": "module"
+       }
+    ]
+    let mainModuleFlattenArr = HelperService.flattenNestedArray(mainModule);
+    HelperService.loggerService("mainModuleFlattenArr",mainModuleFlattenArr);
+    for(let obj of mainModuleFlattenArr){
+      let renderData = {
+        modulePackageArr:modulePathArr,
+        isMainModule:true,
+        moduleName:'Main'
+      };
+      HelperService.loggerService("templatePath",HelperService.nunjuckRender(HelperService.getTemplatePath(obj.templateType),renderData));
+    }
   }
 
 
