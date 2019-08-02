@@ -1,6 +1,7 @@
 import { app, BrowserWindow, screen, ipcMain } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+var shell = require('shelljs');
 
 let win, serve;
 const args = process.argv.slice(1);
@@ -72,6 +73,14 @@ try {
       createWindow();
     }
   });
+
+  ipcMain.on('generate:list', (event, arg) => {
+    shell.cd(arg);
+    shell.echo(shell.pwd());
+    shell.exec('ng new generate-app --style=scss', function(code, stdout, stderr) {
+      win.webContents.send('generate:emit', {code,stdout,stderr})
+    });
+  })
 
 } catch (e) {
   // Catch Error

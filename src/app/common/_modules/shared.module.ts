@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PrimengModule } from '@app/common/_modules/primeng.module';
+import { AppHeaderComponent } from '@app/common/_components/app-header/app-header.component';
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        AppHeaderComponent
+    ],
     imports: [ 
         CommonModule,
         PrimengModule,
@@ -16,7 +19,8 @@ import { PrimengModule } from '@app/common/_modules/primeng.module';
     exports: [
         PrimengModule,
         NgSelectModule,
-        FormsModule
+        FormsModule,
+        AppHeaderComponent
     ],
     providers: [],
 })
