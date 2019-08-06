@@ -1,30 +1,101 @@
-<div class="container">
-<section class="py-4 col-lg-8 offset-2">
-    <div class="card ">
-        <div class="card-header">
-            Module
-        </div>
-        <div class="card-body">
-            <form [formGroup]="ngSetup">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Project Directory</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" formControlName="directory">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" (click)="showDialog()">Browse</button>
-                        </div>
+<nav class="navbar navbar-light bg-light justify-content-between">
+    <a class="navbar-brand" href="#">UI Bot</a>
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="createProject()">Submit</button>
+</nav>
+<section class="p-4">
+    <form [formGroup]="ngSetup">
+        <div class="row">
+                <div class="col-5">
+                    <div class="card ">
+                            <div class="card-header">
+                                Module
+                            </div>
+                            <div class="card-body">
+                                
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Project Directory</label>
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" formControlName="directory">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary" type="button" (click)="showDialog()">Browse</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Project Name</label>
+                                        <input type="text" class="form-control" formControlName="workspace">
+                                    </div>
+                            </div>
+                            
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Project Name</label>
-                    <input type="text" class="form-control" formControlName="workspace">
+                <div class="col-7">
+                        <div class="card ">
+                            <div class="card-header">
+                            Options
+                            </div>
+                            <div class="card-body">
+                                    <accordion [isAnimated]="true">
+                                            <accordion-group heading="Basic">
+                                                <div formGroupName="basicOptions">
+                                                        <div class="form-group">
+                                                                <label>Style</label>
+                                                                <select class="form-control" formControlName="style">
+                                                                    <option [value]="'css'">CSS</option>
+                                                                    <option [value]="'less'">LESS</option>
+                                                                    <option [value]="'scss'">SCSS</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" formControlName="createApplication">
+                                                                    <label class="form-check-label" >
+                                                                            Create Application
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" formControlName="skipInstall">
+                                                                        <label class="form-check-label" >
+                                                                                Skip Install
+                                                                        </label>
+                                                                </div>
+                                                               
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" formControlName="skipGit">
+                                                                    <label class="form-check-label" >
+                                                                            Skip Git
+                                                                    </label>
+                                                                </div>
+                                                                    
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" formControlName="skipTests">
+                                                                        <label class="form-check-label" >
+                                                                                Skip Test
+                                                                        </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" formControlName="force">
+                                                                        <label class="form-check-label" >
+                                                                                Force
+                                                                        </label>
+                                                                </div>
+                                                            </div>
+                                                </div>
+                                                
+                                            </accordion-group>
+                                    </accordion>
+                                
+                            </div>
+                        </div>            
                 </div>
-            </form>
         </div>
-        <div class="card-footer">
-          <button type="button" class="btn btn-primary" (click)="createProject()">Submit</button>
-        </div>
-    </div>
+    </form>
 </section>
-  
-</div>

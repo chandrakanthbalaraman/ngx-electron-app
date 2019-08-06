@@ -4,6 +4,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PrimengModule } from '@app/common/_modules/primeng.module';
 import { AppHeaderComponent } from '@app/common/_components/app-header/app-header.component';
+import { NgxBootstrapModule } from '@app/common/_modules/ngxbootstrap.module';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { AppHeaderComponent } from '@app/common/_components/app-header/app-heade
         PrimengModule,
         NgSelectModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxBootstrapModule
         
      ],
     exports: [
@@ -22,7 +24,8 @@ import { AppHeaderComponent } from '@app/common/_components/app-header/app-heade
         NgSelectModule,
         FormsModule,
         ReactiveFormsModule,
-        AppHeaderComponent
+        AppHeaderComponent,
+        NgxBootstrapModule
     ],
     providers: [],
 })

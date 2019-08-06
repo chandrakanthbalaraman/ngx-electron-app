@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { ElectronService } from 'ngx-electron';
 import { MAIN_MODULES_ARR } from '@app/common/_const/ngx/ngx-modules.const';
 import { HelperService } from '@app/common/_services/common/helper.service';
+import { ngxHelperService } from '@app/common/_services/ngx/ngx-helper.service';
+import { SETUP_OPTIONS } from '@app/common/_const/ngx/ngx-options.const';
 var shell = require('shelljs');
 
 
@@ -23,7 +25,16 @@ export class InitialComponent implements OnInit {
   ) {
     this.ngSetup = this.formBuild.group({
       directory:[''],
-      workspace:['']
+      workspace:[''],
+      basicOptions:this.formBuild.group({
+        style:['scss'],
+        createApplication:[false],
+        skipInstall:[true],
+        skipGit:[true],
+        skipTests:[true],
+        force:[true],
+      })
+      
     })
    }
 
@@ -48,9 +59,10 @@ export class InitialComponent implements OnInit {
   }
 
   createProject(){
+    let formVal = this.ngSetup.value
+    let cmdOptions = ngxHelperService.optionToCMD(formVal.basicOptions,SETUP_OPTIONS.BASIC_OPTIONS);
     shell.cd(this.projectPath);
-    let options = '--style=scss --createApplication=false --skip-install=true --skipGit=true --skipTests=true --force=true';
-    shell.exec(`ng new ${this.ngSetup.get('workspace').value} ${options}`, (code, stdout, stderr) =>{
+    shell.exec(`ng new ${formVal.workspace} ${cmdOptions}`, (code, stdout, stderr) =>{
       console.log('Exit code:', code);
       console.log('Program output:', stdout);
       console.log('Program stderr:', stderr);
