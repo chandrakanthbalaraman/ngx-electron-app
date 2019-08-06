@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import { DefaultComponent } from '@app/layout/main/default/default.component';
+import { InitialComponent } from '@app/layout/main/initial/initial.component';
 import { SharedModule } from '@app/common/_modules/shared.module';
 
 const routes: Routes = [
     {
         path: '',
-        component: DefaultComponent,
+        component: InitialComponent,
     }
 ]
 @NgModule({
     declarations: [
-        DefaultComponent
+        InitialComponent
     ],
     imports: [CommonModule, RouterModule.forChild(routes),SharedModule],
     exports: [RouterModule],
     providers: [],
 })
-export class DefaultModule { }
+export class SkeletonModule { }

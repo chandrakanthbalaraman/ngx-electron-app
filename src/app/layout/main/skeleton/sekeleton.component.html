@@ -11,7 +11,7 @@
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" formControlName="directory">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" (click)="showDialog()">Browse</button>
+                            <button class="btn btn-outline-secondary" type="button">Browse</button>
                         </div>
                     </div>
                 </div>
@@ -20,9 +20,19 @@
                     <input type="text" class="form-control" formControlName="workspace">
                 </div>
             </form>
+            <div class="form-group">
+                    <button type="button" class="btn btn-primary" (click)="showDialog()">Create Ng</button>
+            </div>
+            <ng-select
+                    #select
+                    [items]="mainModuleArr"
+                    [multiple]="true"
+                    bindLabel="name"
+                    [(ngModel)]="selectedModule">
+            </ng-select>
         </div>
         <div class="card-footer">
-          <button type="button" class="btn btn-primary" (click)="createProject()">Submit</button>
+          <button type="button" class="btn btn-primary" (click)="formModule()">Submit</button>
         </div>
     </div>
 </section>
