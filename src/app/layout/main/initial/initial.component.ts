@@ -66,30 +66,38 @@ export class InitialComponent implements OnInit {
   createProject() {
     let formVal = this.ngSetup.value
     const projectpath = formVal.directory +'\\';
-
-    shell.cd(this.projectPath);
+    
+    shell.cd(formVal.directory);
     let cmdOptions = ngxHelperService.optionToCMD(formVal.basicOptions, SETUP_OPTIONS.BASIC_OPTIONS);
-    shell.exec(`ng new ${formVal.workspace} ${cmdOptions}`, (code, stdout, stderr) => {
-      // console.log('Exit code:', code);
-      // console.log('Program output:', stdout);
-      // console.log('Program stderr:', stderr);
-      // console.log(projectpath);
-      let pathFlattenArr = HelperService.flattenNestedArray(generateProject.ngCLIAppInfo, formVal.workspace).map((item, index) => {
-        item.id = index + 1;
-        return item;
-      });
-      HelperService.loggerService("pathFlattenArr", pathFlattenArr);
-      this.projectService.generateProject(projectpath, pathFlattenArr).then(
-        (data: any) => {
-          // this.files = generateProject.appInfo;
-          // this.loading = false;
-        },
-        (error) => {
+    HelperService.loggerService("cmdOptions",cmdOptions);
+    const shellProcess = shell.exec(`ng new ${formVal.workspace} ${cmdOptions}`, {async:true});
+    shellProcess.stdout.on('data',(data)=>{
+        console.log('Program output:', data);  
+    })
+    shellProcess.stderr.on('data',(error)=>{
+      console.log('Program error:', error);  
+    })
+    shellProcess.on('close',(code)=>{
+        console.log('Exit code:', code);  
+        if(code==0){
+          let pathFlattenArr = HelperService.flattenNestedArray(generateProject.ngCLIAppInfo, formVal.workspace).map((item, index) => {
+            item.id = index + 1;
+            return item;
+            });
+            HelperService.loggerService("pathFlattenArr", pathFlattenArr);
+            this.projectService.generateProject(projectpath, pathFlattenArr).then(
+              (data: any) => {
+                // this.files = generateProject.appInfo;
+                // this.loading = false;
+                shellProcess.kill();
+              },
+              (error) => {
+              }
+            )
         }
-      )
-    });
-
-
+        
+    })
+    
   }
 
 
