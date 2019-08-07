@@ -5,7 +5,11 @@ import { MAIN_MODULES_ARR } from '@app/common/_const/ngx/ngx-modules.const';
 import { HelperService } from '@app/common/_services/common/helper.service';
 import { ngxHelperService } from '@app/common/_services/ngx/ngx-helper.service';
 import { SETUP_OPTIONS } from '@app/common/_const/ngx/ngx-options.const';
+import { generateProject } from '@assets/wizard/ngx/config-project/generate';
+import { ProjectService } from '@app/common/_services/common/project.service';
+
 var shell = require('shelljs');
+var path = require('path');
 
 
 @Component({
@@ -16,30 +20,31 @@ var shell = require('shelljs');
 export class InitialComponent implements OnInit {
 
   mainModuleArr = MAIN_MODULES_ARR;
-  selectedModule:Array<any> = [];
-  projectPath:string;
+  selectedModule: Array<any> = [];
+  projectPath: string;
   ngSetup: FormGroup;
   constructor(
     private _electronService: ElectronService,
-    private formBuild: FormBuilder
+    private formBuild: FormBuilder,
+    private projectService: ProjectService
   ) {
     this.ngSetup = this.formBuild.group({
-      directory:[''],
-      workspace:[''],
-      basicOptions:this.formBuild.group({
-        style:['scss'],
-        createApplication:[false],
-        skipInstall:[true],
-        skipGit:[true],
-        skipTests:[true],
-        force:[true],
+      directory: ['D:\\dev\\learnings\\electron\\test'],
+      workspace: ['newProj'],
+      basicOptions: this.formBuild.group({
+        style: ['scss'],
+        createApplication: [false],
+        skipInstall: [true],
+        skipGit: [true],
+        skipTests: [true],
+        force: [true],
       })
-      
-    })
-   }
 
-  ngOnInit(){
-    
+    })
+  }
+
+  ngOnInit() {
+
   }
 
   showDialog() {
@@ -58,19 +63,35 @@ export class InitialComponent implements OnInit {
 
   }
 
-  createProject(){
+  createProject() {
     let formVal = this.ngSetup.value
-    let cmdOptions = ngxHelperService.optionToCMD(formVal.basicOptions,SETUP_OPTIONS.BASIC_OPTIONS);
+    const projectpath = formVal.directory +'\\';
+
     shell.cd(this.projectPath);
-    shell.exec(`ng new ${formVal.workspace} ${cmdOptions}`, (code, stdout, stderr) =>{
-      console.log('Exit code:', code);
-      console.log('Program output:', stdout);
-      console.log('Program stderr:', stderr);
+    let cmdOptions = ngxHelperService.optionToCMD(formVal.basicOptions, SETUP_OPTIONS.BASIC_OPTIONS);
+    shell.exec(`ng new ${formVal.workspace} ${cmdOptions}`, (code, stdout, stderr) => {
+      // console.log('Exit code:', code);
+      // console.log('Program output:', stdout);
+      // console.log('Program stderr:', stderr);
+      // console.log(projectpath);
+      let pathFlattenArr = HelperService.flattenNestedArray(generateProject.ngCLIAppInfo, formVal.workspace).map((item, index) => {
+        item.id = index + 1;
+        return item;
+      });
+      HelperService.loggerService("pathFlattenArr", pathFlattenArr);
+      this.projectService.generateProject(projectpath, pathFlattenArr).then(
+        (data: any) => {
+          // this.files = generateProject.appInfo;
+          // this.loading = false;
+        },
+        (error) => {
+        }
+      )
     });
+
 
   }
 
 
 
-  
 }

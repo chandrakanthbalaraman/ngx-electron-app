@@ -2,6 +2,7 @@ import { AppConfig } from "@env/environment";
 import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
 import * as _ from 'underscore';
 
+var path = require('path');
 var nunjucks = require('nunjucks');
 nunjucks.configure({ autoescape: true });
 
