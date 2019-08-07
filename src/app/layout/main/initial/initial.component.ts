@@ -92,7 +92,7 @@ export class InitialComponent implements OnInit {
                 shellProcess.kill();
               },
               (error) => {
-              }
+              }             
             )
         }
         

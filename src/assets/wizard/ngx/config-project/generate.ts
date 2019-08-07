@@ -572,56 +572,6 @@ export var  generateProject = {
 
                         }
                     ]
-                },
-                {
-                    "label": "environments",
-                    "data": "environments",
-                    "type":"dir",
-                    "children": [
-                        {
-                            "label": "environment.ts",
-                            "data": "environment.ts",
-                            "type":"file",
-                            "templateType": "environment"
-                        },
-                        {
-                            "label": "environment.prod.ts",
-                            "data": "environment.prod.ts",
-                            "type":"file",
-                            "templateType": "environment"
-                        }
-                    ]
-                },
-                {
-                    "label": "index.html",
-                    "data": "index.html",
-                    "type":"file",
-                    "templateType": "index"
-                },
-                {
-                    "label": "main.ts",
-                    "data": "main.ts",
-                    "type":"file",
-                },
-                {
-                    "label": "polyfills.ts",
-                    "data": "polyfills.ts",
-                    "type":"file",
-                },
-                {
-                    "label": "styles.scss",
-                    "data": "styles.scss",
-                    "type":"file",
-                },
-                {
-                    "label": "tsconfig.app.json",
-                    "data": "tsconfig.app.json",
-                    "type":"file",
-                },
-                {
-                    "label": "typings.d.ts",
-                    "data": "typings.d.ts",
-                    "type":"file",
                 }
             ]
 
