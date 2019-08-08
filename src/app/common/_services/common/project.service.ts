@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HelperService } from '@app/common/_services/common/helper.service';
+import { APP_VAL } from '@app/common/_const/app/app-val.const';
 var mkdirp = require('mkdirp');
 
 var asyncJS = require('async');
@@ -29,14 +30,11 @@ export class ProjectService {
 
     createIt(dir, obj, fbCb) {
         var dirPath = path.resolve(dir + obj.path);
-        console.log("dirPath",dirPath);
-        if(obj.type == 'dir'){
+        if(obj.type === APP_VAL.SETUP.DIR){
             mkdirp(dirPath,(err,resp)=>{
-                console.log("err",err);
-                console.log("resp",resp);
                 fbCb(err,resp);
             });
-        }else if(obj.type == 'file'){
+        }else if(obj.type === APP_VAL.SETUP.FILE){
             
                 if(obj.label ){
                     let content = obj.hasOwnProperty('templateType') ? 

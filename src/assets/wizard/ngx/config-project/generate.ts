@@ -1,74 +1,76 @@
-export var  generateProject = {
+import { APP_VAL } from "@app/common/_const/app/app-val.const";
+
+export var  GEN_PROJECT = {
     appInfo: [
         {
             "label": "generate",
             "data": "generate",
-            "type": "dir",
+            "type": APP_VAL.SETUP.DIR,
             "children": [
                 {
                     "label": "src",
                     "data": "src",
-                    "type":"dir",
+                    "type":APP_VAL.SETUP.DIR,
                     "children": [
                         {
                             "label": "app",
                             "data": "app",
-                            "type":"dir",
+                            "type":APP_VAL.SETUP.DIR,
                             "children": [
                                 {
                                     "label": "common",
                                     "data": "common",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children": [
                                         {
                                             "label": "_components",
                                             "data": "_components",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
 
                                         },
                                         {
                                             "label": "_directives",
                                             "data": "_directives",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
                                         },
                                         {
                                             "label": "_interfaces",
                                             "data": "_interfaces",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
                                         },
                                         {
                                             "label": "_consts",
                                             "data": "_consts",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
                                             "children":[
                                                 {
                                                     "label": "app-url.const.ts",
                                                     "data": "app-url.const.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
                                                 },
                                                 {
                                                     "label": "app-animate.const.ts",
                                                     "data": "app-animate.const.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
                                                 },
                                                 {
                                                     "label": "app-regex.const.ts",
                                                     "data": "app-regex.const.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
 
                                                 },
                                                 {
                                                     "label": "app-messages.const.ts",
                                                     "data": "app-messages.const.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
                                                 },
                                                 {
                                                     "label": "app-config.const.ts",
                                                     "data": "app-config.const.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
                                                 }
                                             ]
 
@@ -76,25 +78,25 @@ export var  generateProject = {
                                         {
                                             "label": "_functions",
                                             "data": "_functions",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
                                         },
                                         {
                                             "label": "_modules",
                                             "data": "_modules",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
                                             "children": [
                                                 {
                                                     "label": "core.module.ts",
                                                     "data": "core.module.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
                                                     "templateType": "module"
 
                                                 },
                                                 {
                                                     "label": "shared.module.ts",
                                                     "data": "shared.module.ts",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
                                                     "templateType": "module"
 
                                                 }
@@ -104,13 +106,13 @@ export var  generateProject = {
                                         {
                                             "label": "_pipes",
                                             "data": "_pipes",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
                                         },
                                         {
                                             "label": "_services",
                                             "data": "_services",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
                                         }
 
@@ -120,38 +122,38 @@ export var  generateProject = {
                                 {
                                     "label": "layout",
                                     "data": "layout",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
                                 },
                                 {
                                     "label": "app.component.ts",
                                     "data": "app.component.ts",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
                                     "templateType": "component"
                                 },
                                 {
                                     "label": "app.module.ts",
                                     "data": "app.module.ts",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
                                     "templateType": "module"
 
                                 },
                                 {
                                     "label": "app.routing.ts",
                                     "data": "app.routing.ts",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
 
                                 },
                                 {
                                     "label": "app.component.scss",
                                     "data": "app.component.scss",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
 
 
                                 },
                                 {
                                     "label": "app.component.html",
                                     "data": "app.component.html",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
                                 }
 
                             ]
@@ -159,34 +161,34 @@ export var  generateProject = {
                         {
                             "label": "assets",
                             "data": "assets",
-                            "type":"dir",
+                            "type":APP_VAL.SETUP.DIR,
                             "children": [
                                 {
                                     "label": "partials",
                                     "data": "partials",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children": [
                                         {
                                             "label": "_base",
                                             "data": "_base",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
                                             "children": [
                                                 {
                                                     "label": "base.scss",
                                                     "data": "base.scss",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
 
                                                 },
                                                 {
                                                     "label": "typography.scss",
                                                     "data": "typography.scss",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
 
                                                 },
                                                 {
                                                     "label": "colors.scss",
                                                     "data": "colors.scss",
-                                                    "type":"file",
+                                                    "type":APP_VAL.SETUP.FILE,
 
                                                 }
                                             ]
@@ -195,12 +197,12 @@ export var  generateProject = {
                                         {
                                             "label": "_modules",
                                             "data": "_modules",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
                                             "children": [
                                                 {
                                                     "label": "_components",
                                                     "data": "_components",
-                                                    "type":"dir",
+                                                    "type":APP_VAL.SETUP.DIR,
 
                                                 }
                                             ]
@@ -209,19 +211,19 @@ export var  generateProject = {
                                         {
                                             "label": "_layouts",
                                             "data": "_layouts",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
 
 
                                         },
                                         {
                                             "label": "_utils",
                                             "data": "_utils",
-                                            "type":"dir",
+                                            "type":APP_VAL.SETUP.DIR,
                                             "children": [
                                                 {
                                                     "label": "_mixins",
                                                     "data": "_mixins",
-                                                    "type":"dir",
+                                                    "type":APP_VAL.SETUP.DIR,
                                                     
 
                                                 }
@@ -231,7 +233,7 @@ export var  generateProject = {
                                         {
                                             "label": "app-style.scss",
                                             "data": "app-style.scss",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         }
 
@@ -241,7 +243,7 @@ export var  generateProject = {
                                 {
                                     "label": "images",
                                     "data": "_utils",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
                                 }
                             ]
@@ -249,18 +251,18 @@ export var  generateProject = {
                         {
                             "label": "environments",
                             "data": "environments",
-                            "type":"dir",
+                            "type":APP_VAL.SETUP.DIR,
                             "children": [
                                 {
                                     "label": "environment.ts",
                                     "data": "environment.ts",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
                                     "templateType": "environment"
                                 },
                                 {
                                     "label": "environment.prod.ts",
                                     "data": "environment.prod.ts",
-                                    "type":"file",
+                                    "type":APP_VAL.SETUP.FILE,
                                     "templateType": "environment"
                                 }
                             ]
@@ -268,33 +270,33 @@ export var  generateProject = {
                         {
                             "label": "index.html",
                             "data": "index.html",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                             "templateType": "index"
                         },
                         {
                             "label": "main.ts",
                             "data": "main.ts",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                         },
                         {
                             "label": "polyfills.ts",
                             "data": "polyfills.ts",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                         },
                         {
                             "label": "styles.scss",
                             "data": "styles.scss",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                         },
                         {
                             "label": "tsconfig.app.json",
                             "data": "tsconfig.app.json",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                         },
                         {
                             "label": "typings.d.ts",
                             "data": "typings.d.ts",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                         }
                     ]
 
@@ -302,31 +304,31 @@ export var  generateProject = {
                 {
                     "label": "gitignore",
                     "data": "gitignore",
-                    "type":"file",
+                    "type":APP_VAL.SETUP.FILE,
                     "templateType": "gitignore"
                 },
                 {
                     "label": ".angular-cli.json",
                     "data": ".angular-cli.json",
-                    "type":"file",
+                    "type":APP_VAL.SETUP.FILE,
                     "templateType": "cli"
                 },
                 {
                     "label": "package.json",
                     "data": "package.json",
-                    "type":"file",
+                    "type":APP_VAL.SETUP.FILE,
                     "templateType": "package"
                 },
                 {
                     "label": "tsconfig.json",
                     "data": "tsconfig.json",
-                    "type":"file",
+                    "type":APP_VAL.SETUP.FILE,
                     "templateType": "tsconfig"
                 },
                 {
                     "label": "README.md",
                     "data": "README.md",
-                    "type":"file",
+                    "type":APP_VAL.SETUP.FILE,
                 }
             ]
         }
@@ -335,67 +337,67 @@ export var  generateProject = {
         {
             "label": "src",
             "data": "src",
-            "type":"dir",
+            "type":APP_VAL.SETUP.DIR,
             "children": [
                 {
                     "label": "app",
                     "data": "app",
-                    "type":"dir",
+                    "type":APP_VAL.SETUP.DIR,
                     "children": [
                         {
                             "label": "common",
                             "data": "common",
-                            "type":"dir",
+                            "type":APP_VAL.SETUP.DIR,
                             "children": [
                                 {
                                     "label": "_components",
                                     "data": "_components",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
 
                                 },
                                 {
                                     "label": "_directives",
                                     "data": "_directives",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
                                 },
                                 {
                                     "label": "_interfaces",
                                     "data": "_interfaces",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
                                 },
                                 {
                                     "label": "_consts",
                                     "data": "_consts",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children":[
                                         {
                                             "label": "app-url.const.ts",
                                             "data": "app-url.const.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
                                         },
                                         {
                                             "label": "app-animate.const.ts",
                                             "data": "app-animate.const.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
                                         },
                                         {
                                             "label": "app-regex.const.ts",
                                             "data": "app-regex.const.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         },
                                         {
                                             "label": "app-messages.const.ts",
                                             "data": "app-messages.const.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
                                         },
                                         {
                                             "label": "app-config.const.ts",
                                             "data": "app-config.const.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
                                         }
                                     ]
 
@@ -403,25 +405,25 @@ export var  generateProject = {
                                 {
                                     "label": "_functions",
                                     "data": "_functions",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
                                 },
                                 {
                                     "label": "_modules",
                                     "data": "_modules",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children": [
                                         {
                                             "label": "core.module.ts",
                                             "data": "core.module.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
                                             "templateType": "module"
 
                                         },
                                         {
                                             "label": "shared.module.ts",
                                             "data": "shared.module.ts",
-                                            "type":"file",
+                                            "type":APP_VAL.SETUP.FILE,
                                             "templateType": "module"
 
                                         }
@@ -431,13 +433,13 @@ export var  generateProject = {
                                 {
                                     "label": "_pipes",
                                     "data": "_pipes",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
                                 },
                                 {
                                     "label": "_services",
                                     "data": "_services",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
 
                                 }
 
@@ -447,38 +449,38 @@ export var  generateProject = {
                         {
                             "label": "layout",
                             "data": "layout",
-                            "type":"dir",
+                            "type":APP_VAL.SETUP.DIR,
                         },
                         {
                             "label": "app.component.ts",
                             "data": "app.component.ts",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                             "templateType": "component"
                         },
                         {
                             "label": "app.module.ts",
                             "data": "app.module.ts",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                             "templateType": "module"
 
                         },
                         {
                             "label": "app.routing.ts",
                             "data": "app.routing.ts",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
 
                         },
                         {
                             "label": "app.component.scss",
                             "data": "app.component.scss",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
 
 
                         },
                         {
                             "label": "app.component.html",
                             "data": "app.component.html",
-                            "type":"file",
+                            "type":APP_VAL.SETUP.FILE,
                         }
 
                     ]
@@ -486,48 +488,80 @@ export var  generateProject = {
                 {
                     "label": "assets",
                     "data": "assets",
-                    "type":"dir",
+                    "type":APP_VAL.SETUP.DIR,
                     "children": [
                         {
-                            "label": "partials",
-                            "data": "partials",
-                            "type":"dir",
+                            "label": "styles",
+                            "data": "styles",
+                            "type":APP_VAL.SETUP.DIR,
                             "children": [
                                 {
-                                    "label": "_base",
-                                    "data": "_base",
-                                    "type":"dir",
+                                    "label": "_abstracts",
+                                    "data": "_abstracts",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children": [
                                         {
-                                            "label": "base.scss",
-                                            "data": "base.scss",
-                                            "type":"file",
+                                            "label": "_variables",
+                                            "data": "_variables",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         },
                                         {
-                                            "label": "typography.scss",
-                                            "data": "typography.scss",
-                                            "type":"file",
+                                            "label": "_functions",
+                                            "data": "_functions",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         },
                                         {
-                                            "label": "colors.scss",
-                                            "data": "colors.scss",
-                                            "type":"file",
+                                            "label": "_mixins",
+                                            "data": "_mixins",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         }
                                     ]
 
                                 },
                                 {
-                                    "label": "_modules",
-                                    "data": "_modules",
-                                    "type":"dir",
+                                    "label": "_base",
+                                    "data": "_base",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children": [
                                         {
-                                            "label": "_components",
-                                            "data": "_components",
-                                            "type":"dir",
+                                            "label": "_reset",
+                                            "data": "_reset",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        },
+                                        {
+                                            "label": "_typography",
+                                            "data": "_typography",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        }
+                                    ]
+
+                                },
+                                {
+                                    "label": "_components",
+                                    "data": "_components",
+                                    "type":APP_VAL.SETUP.DIR,
+                                    "children": [
+                                        {
+                                            "label": "_buttons",
+                                            "data": "_buttons",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        },
+                                        {
+                                            "label": "_list-group",
+                                            "data": "_list-group",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        },
+                                        {
+                                            "label": "_card",
+                                            "data": "_card",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         }
                                     ]
@@ -536,29 +570,84 @@ export var  generateProject = {
                                 {
                                     "label": "_layouts",
                                     "data": "_layouts",
-                                    "type":"dir",
-
-
-                                },
-                                {
-                                    "label": "_utils",
-                                    "data": "_utils",
-                                    "type":"dir",
+                                    "type":APP_VAL.SETUP.DIR,
                                     "children": [
                                         {
-                                            "label": "_mixins",
-                                            "data": "_mixins",
-                                            "type":"dir",
-                                            
+                                            "label": "_header",
+                                            "data": "_header",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        },
+                                        {
+                                            "label": "_footer",
+                                            "data": "_footer",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        },
+                                        {
+                                            "label": "_sidebar",
+                                            "data": "_sidebar",
+                                            "type":APP_VAL.SETUP.FILE,
 
                                         }
                                     ]
 
                                 },
                                 {
-                                    "label": "app-style.scss",
-                                    "data": "app-style.scss",
-                                    "type":"file",
+                                    "label": "_pages",
+                                    "data": "_pages",
+                                    "type":APP_VAL.SETUP.DIR,
+                                    "children": [
+                                        {
+                                            "label": "_auth",
+                                            "data": "_auth",
+                                            "type":"files",
+
+                                        },
+                                        {
+                                            "label": "_dashboard",
+                                            "data": "_dashboard",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        },
+                                        {
+                                            "label": "_contact",
+                                            "data": "_contact",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        }
+                                    ]
+
+                                },
+                                {
+                                    "label": "_themes",
+                                    "data": "_themes",
+                                    "type":APP_VAL.SETUP.DIR,
+                                    "children": [
+                                        {
+                                            "label": "_theme1",
+                                            "data": "_theme1",
+                                            "type":"files",
+
+                                        },
+                                        {
+                                            "label": "_theme2",
+                                            "data": "_theme2",
+                                            "type":APP_VAL.SETUP.FILE,
+
+                                        }
+                                    ]
+
+                                },
+                                {
+                                    "label": "_vendors",
+                                    "data": "_vendors",
+                                    "type":APP_VAL.SETUP.DIR,
+                                },
+                                {
+                                    "label": "app-style",
+                                    "data": "app-style",
+                                    "type":APP_VAL.SETUP.FILE,
 
                                 }
 
@@ -567,8 +656,8 @@ export var  generateProject = {
                         },
                         {
                             "label": "images",
-                            "data": "_utils",
-                            "type":"dir",
+                            "data": "images",
+                            "type":APP_VAL.SETUP.DIR,
 
                         }
                     ]
@@ -596,3 +685,7 @@ export var  generateProject = {
         }
     ]
 }
+
+export var SEEK_REF= {
+    STYLE_DIR:['/src/assets/styles']
+} 

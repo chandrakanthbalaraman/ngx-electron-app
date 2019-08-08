@@ -3,7 +3,7 @@ import { ElectronService } from 'ngx-electron';
 import {TreeNode} from 'primeng/api';
 
 import { ProjectService } from '@app/common/_services/common/project.service';
-import { generateProject } from '@assets/wizard/ngx/config-project/generate';
+import { GEN_PROJECT } from '@assets/wizard/ngx/config-project/generate';
 import { HelperService } from '@app/common/_services/common/helper.service';
 const nunjucks = require('nunjucks');
 const path = require('path');
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-  //  this.files = generateProject.appInfo;
+  //  this.files = GEN_PROJECT.appInfo;
   }
 
 
@@ -43,14 +43,14 @@ export class HomeComponent implements OnInit {
         if (data) {
           this.projectPath = data[0];
           console.log("projectPath", this.projectPath);
-          let pathFlattenArr = HelperService.flattenNestedArray(generateProject.appInfo).map((item,index)=>{
+          let pathFlattenArr = HelperService.flattenNestedArray(GEN_PROJECT.appInfo).map((item,index)=>{
             item.id = index+1;
             return item;
           });
            HelperService.loggerService("pathFlattenArr",pathFlattenArr);
           this.projectService.generateProject(this.projectPath,pathFlattenArr).then(
             (data: any) => {
-              this.files = generateProject.appInfo;
+              this.files = GEN_PROJECT.appInfo;
               this.loading = false;
             },
             (error) => {

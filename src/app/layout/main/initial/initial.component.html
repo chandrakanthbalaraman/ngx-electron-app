@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body">
                                     <accordion [isAnimated]="true">
-                                            <accordion-group heading="Basic">
+                                            <accordion-group heading="Basic Options" [isOpen]="isFirstOpen">
                                                 <div formGroupName="basicOptions">
                                                         <div class="form-group">
                                                                 <label>Style</label>
@@ -74,20 +74,46 @@
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" formControlName="skipTests">
-                                                                        <label class="form-check-label" >
-                                                                                Skip Test
-                                                                        </label>
+                                                                    <input class="form-check-input" type="checkbox" formControlName="skipTests">
+                                                                    <label class="form-check-label" >
+                                                                            Skip Test
+                                                                    </label>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" formControlName="force">
-                                                                        <label class="form-check-label" >
-                                                                                Force
-                                                                        </label>
+                                                                    <input class="form-check-input" type="checkbox" formControlName="force">
+                                                                    <label class="form-check-label" >
+                                                                            Force
+                                                                    </label>
                                                                 </div>
                                                             </div>
+                                                </div>
+                                                
+                                            </accordion-group>
+                                             <accordion-group heading="Custom Options">
+                                                <div formGroupName="customOptions">
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" formControlName="createCustomStructure">
+                                                            <label class="form-check-label" >
+                                                                Create Custom Folder Structure
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col-12 text-right">
+                                                            <button type="button" class="btn btn-primary" [disabled]="ngSetup.get('customOptions').get('layouts').invalid" (click)="createNewLayout()">Add New Layout</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" formArrayName="layouts" *ngFor="let item of ngSetup.get('customOptions').get('layouts').controls; let i = index;">
+                                                        <div class="row" [formGroupName]="i">
+                                                            <div class="col-6">
+                                                                <input formControlName="name" placeholder="Layout Name" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
                                                 </div>
                                                 
                                             </accordion-group>

@@ -2,6 +2,7 @@ import { AppConfig } from "@env/environment";
 import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
 import * as _ from 'underscore';
 
+
 var path = require('path');
 var nunjucks = require('nunjucks');
 nunjucks.configure({ autoescape: true });
@@ -9,7 +10,7 @@ nunjucks.configure({ autoescape: true });
 
 export class HelperService{
 
-
+    
       /**
      * Console Logger Service
      * @param name 
@@ -81,5 +82,19 @@ export class HelperService{
         }
         return null;
         
+    }
+
+    static pathIncludes(seekArr,pathObj,type){
+        if(!_.isEmpty(pathObj)){
+            return seekArr.every((item)=>{
+                return pathObj.path.includes(item) && pathObj.type == type;
+            })
+        }
+        return false;
+        
+    }
+
+    static getStyleProcessing(configObj){
+        return configObj.style;
     }
 }
