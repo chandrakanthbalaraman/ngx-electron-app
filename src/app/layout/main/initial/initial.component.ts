@@ -33,7 +33,7 @@ export class InitialComponent implements OnInit {
     private storageService: StorageService
   ) {
     this.ngSetup = this.formBuilder.group({
-      directory: ['D:\\dev\\learnings\\electron\\test'],
+      directory: ['F:\\chandru\\Learnings\\test'],
       workspace: ['newProj'],
       basicOptions: this.formBuilder.group({
         style: ['scss'],
@@ -87,10 +87,11 @@ export class InitialComponent implements OnInit {
   createProject() {
     let formVal = this.ngSetup.getRawValue()
     const projectpath = formVal.directory + '\\';
-
     shell.cd(formVal.directory);
+
     let cmdOptions = ngxHelperService.optionToCMD(formVal.basicOptions, SETUP_OPTIONS.BASIC_OPTIONS);
     HelperService.loggerService("cmdOptions", cmdOptions);
+    
     const shellProcess = shell.exec(`ng new ${formVal.workspace} ${cmdOptions}`, { async: true });
     shellProcess.stdout.on('data', (data) => {
       console.log('Program output:', data);
@@ -116,28 +117,43 @@ export class InitialComponent implements OnInit {
   }
 
   createCustomFolder(...arg) {
-    
-    const styleProcess = HelperService.getStyleProcessing(arg[0].basicOptions);
-    HelperService.loggerService("styleProcess",styleProcess);
-    let pathFlattenArr = HelperService.flattenNestedArray(GEN_PROJECT.ngCLIAppInfo, arg[0].workspace).map((item, index) => {
+    const formDataVal = arg[0];
+    const styleProcess = HelperService.getStyleProcessing(formDataVal.basicOptions);
+    let pathFlattenArr = HelperService.flattenNestedArray(GEN_PROJECT.ngCLIAppInfo, formDataVal.workspace).map((item, index) => {
         if (HelperService.pathIncludes(SEEK_REF.STYLE_DIR, item,APP_VAL.SETUP.FILE)) {
           item.data = item.data+'.'+styleProcess;
           item.label = item.label+'.'+styleProcess;
           item.path = item.path+'.'+styleProcess;
         }
-        item.id = index + 1;
+        // item.id = index + 1;
         console.log(item);
         return item;
     });
+    HelperService.loggerService("formDataVal.customOptions.layouts",formDataVal.customOptions.layouts);
+    if(formDataVal.customOptions.layouts.length > 0){
+      pathFlattenArr.push(...HelperService.addDir(formDataVal.customOptions.layouts,SEEK_REF.LAYOUT_DIR,formDataVal.workspace))
+    }
     HelperService.loggerService("pathFlattenArr", pathFlattenArr);
-    this.projectService.generateProject(arg[2], pathFlattenArr).then(
+    this.generateProject(arg[2],pathFlattenArr,(err,resp)=>{
+      if(!err){
+        console.log("success");
+      }else{
+        console.log("error");
+      }
+      arg[1].kill()
+    })
+   
+  }
+
+  generateProject(projectPath,pathFlattenArr,cb){
+    this.projectService.generateIt(projectPath, pathFlattenArr).then(
       (data: any) => {
         // this.files = GEN_PROJECT.appInfo;
         // this.loading = false;
-        arg[1].kill();
+        cb(null,data)
       },
       (error) => {
-        arg[1].kill();
+        cb(error)
       }
     )
   }

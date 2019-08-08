@@ -687,5 +687,6 @@ export var  GEN_PROJECT = {
 }
 
 export var SEEK_REF= {
-    STYLE_DIR:['/src/assets/styles']
+    STYLE_DIR:['/src/assets/styles'],
+    LAYOUT_DIR:['/src/app/layout']
 } 

@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
             return item;
           });
            HelperService.loggerService("pathFlattenArr",pathFlattenArr);
-          this.projectService.generateProject(this.projectPath,pathFlattenArr).then(
+          this.projectService.generateIt(this.projectPath,pathFlattenArr).then(
             (data: any) => {
               this.files = GEN_PROJECT.appInfo;
               this.loading = false;
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
         return item;
       });
       HelperService.loggerService("pathFlattenArr",pathFlattenArr);
-      this.projectService.generateProject(this.projectPath,pathFlattenArr).then(
+      this.projectService.generateIt(this.projectPath,pathFlattenArr).then(
         (data: any) => {
           this.selectedFile.children = [...mainLayout];
         },

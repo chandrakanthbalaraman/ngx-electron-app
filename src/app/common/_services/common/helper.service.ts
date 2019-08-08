@@ -1,6 +1,7 @@
 import { AppConfig } from "@env/environment";
 import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
 import * as _ from 'underscore';
+import { APP_VAL } from "@app/common/_const/app/app-val.const";
 
 
 var path = require('path');
@@ -96,5 +97,21 @@ export class HelperService{
 
     static getStyleProcessing(configObj){
         return configObj.style;
+    }
+    
+    static addDir(arr,seekArr,workspace){
+        return arr.map((item)=>{
+            return {
+                data:item.name,
+                label:item.name,
+                path:workspace + _.first(seekArr)+'/'+item.name,
+                type:APP_VAL.SETUP.DIR,
+                children:[]
+            }
+        })
+    }
+
+    static createByType(){
+
     }
 }

@@ -12,7 +12,7 @@ var path = require('path');
     providedIn: 'root'
 })
 export class ProjectService {
-    generateProject(dirData,flattenArr) {
+    generateIt(dirData,flattenArr) {
         return new Promise((resolve, reject) => {
             asyncJS.forEach(flattenArr, (item, loopCb) => {
                this.createIt(dirData,item,(err,resp)=>{
