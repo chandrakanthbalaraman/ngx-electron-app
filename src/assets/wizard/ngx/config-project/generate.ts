@@ -666,27 +666,26 @@ export var  GEN_PROJECT = {
 
    
         }
-    ],
-    basicLayout: [
-
-        {
-            "children": [
-                {
-                    "name": "basic-layout"
-
-
-                },
-                {
-                    "name": "main-layout"
-
-
-                }
-            ]
-        }
     ]
+
 }
 
 export var SEEK_REF= {
     STYLE_DIR:['/src/assets/styles'],
-    LAYOUT_DIR:['/src/app/layout']
+    LAYOUT_DIR:['/src/app/layout'],
+    CONST_DIR:['/src/app/common/_consts']
 } 
+
+
+export var CUSTOM_CREATION = {
+    CONST_SECTION:{
+        PATH: SEEK_REF.CONST_DIR,
+        CHILDREN:[
+            {
+                name:'app-regex.const.ts',
+                type:APP_VAL.SETUP.FILE,
+                templateType:'const-file'
+            }
+        ]
+    }
+}

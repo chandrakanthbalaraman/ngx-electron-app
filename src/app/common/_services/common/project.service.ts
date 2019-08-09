@@ -39,14 +39,24 @@ export class ProjectService {
                 if(obj.label ){
                     let content = obj.hasOwnProperty('templateType') ? 
                     HelperService.nunjuckRender(HelperService.getTemplatePath(obj.templateType)): ''
-                    fs.writeFile(dirPath, content,(err,resp)=>{
+                    this.writeFile(dirPath,content,(err,resp)=>{
                         fbCb(err,resp);
-                    });
-                    
+                    })
                 }
         }
         
 
+    }
+
+    writeFile(dirPath,content,fbCb){
+        fs.writeFile(dirPath, content,(err,resp)=>{
+            fbCb(err,resp);
+        });
+    }
+    writeFileSync(dir, pathVal, content){
+        let dirPath = path.resolve(dir + pathVal);
+        return fs.writeFileSync(dirPath, content, 'utf8');
+        
     }
 
     

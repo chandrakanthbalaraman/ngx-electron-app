@@ -28,5 +28,8 @@ export const templatePath = {
     },
     'tsconfig': {
         'template': 'assets/wizard/ngx/templates/setup/tsconfig.html'
+    },
+    'const-file': {
+        'template': 'assets/wizard/ngx/templates/_core/const-file.html'
     }
 }

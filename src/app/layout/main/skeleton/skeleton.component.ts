@@ -41,12 +41,13 @@ export class SkeletonComponent implements OnInit {
     ]
     let mainModuleFlattenArr = HelperService.flattenNestedArray(mainModule);
     HelperService.loggerService("mainModuleFlattenArr",mainModuleFlattenArr);
+    let renderData = {
+      modulePackageArr:modulePathArr,
+      isMainModule:true,
+      moduleName:'Main'
+    };
     for(let obj of mainModuleFlattenArr){
-      let renderData = {
-        modulePackageArr:modulePathArr,
-        isMainModule:true,
-        moduleName:'Main'
-      };
+      
       HelperService.loggerService("templatePath",HelperService.nunjuckRender(HelperService.getTemplatePath(obj.templateType),renderData));
     }
   }

@@ -99,13 +99,14 @@ export class HelperService{
         return configObj.style;
     }
     
-    static addDir(arr,seekArr,workspace){
+    static addbyType(arr,seekArr,workspace,type){
         return arr.map((item)=>{
             return {
                 data:item.name,
                 label:item.name,
                 path:workspace + _.first(seekArr)+'/'+item.name,
-                type:APP_VAL.SETUP.DIR,
+                type:type,
+                templateType:item.templateType,
                 children:[]
             }
         })

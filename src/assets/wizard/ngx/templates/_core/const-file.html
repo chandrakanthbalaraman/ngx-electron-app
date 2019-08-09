@@ -1,0 +1,5 @@
+export const {{name}}= {
+    {% for item in valArr -%}
+    {{item.key}}:{{item.regex}}{% if loop.last == false %},{% endif %}
+    {% endfor %}
+}

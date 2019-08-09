@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body">
                                     <accordion [isAnimated]="true">
-                                            <accordion-group heading="Basic Options" [isOpen]="isFirstOpen">
+                                            <accordion-group heading="Basic Options" [isOpen]="true">
                                                 <div formGroupName="basicOptions">
                                                         <div class="form-group">
                                                                 <label>Style</label>
@@ -92,6 +92,11 @@
                                                 
                                             </accordion-group>
                                              <accordion-group heading="Custom Options">
+                                                <div class="row mb-3">
+                                                    <div class="col-12 text-right">
+                                                        <button class="btn btn-outline-primary" (click)="createCustomStructure()">Create Custom Structure</button>
+                                                    </div>
+                                                </div> 
                                                 <div formGroupName="customOptions">
                                                     <div class="form-group">
                                                         <div class="form-check">
@@ -123,5 +128,69 @@
                         </div>            
                 </div>
         </div>
+        <div class="row my-4">
+            <div class="col-10">
+                <div class="card ">
+                    <div class="card-header">
+                        Const Options
+                    </div>
+                    <div class="card-body">
+                        <accordion [isAnimated]="true">
+                            <accordion-group heading="Basic Options" [isOpen]="true">
+                                <div class="row mb-3">
+                                    <div class="col-12 text-right">
+                                        <button class="btn btn-outline-primary" (click)="createRegex()">Create Regex</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3 mb-3" *ngFor="let obj of regexArr">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" [checked]="obj.isActive" >
+                                            <label class="form-check-label" title="{{obj.regex}}">
+                                                <small>{{obj.name}}</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </accordion-group>
+                        </accordion>            
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row my-4">
+                <div class="col-10">
+                    <div class="card ">
+                        <div class="card-header">
+                            Style Options
+                        </div>
+                        <div class="card-body">
+                            <accordion [isAnimated]="true">
+                                    <accordion-group heading="Style Options">
+                                            <div class="row mb-3">
+                                                    <div class="col-12 text-right">
+                                                        <button class="btn btn-outline-primary" (click)="createStyleOptions()">Create Style Options</button>
+                                                    </div>
+                                            </div>
+                                            <div formGroupName="styleOptions">
+                                                <div class="form-group">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" formControlName="createDefaultMixin">
+                                                        <label class="form-check-label" >
+                                                            Create Default Mixins Folder
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                               
+                                            </div>
+                                            
+                                    </accordion-group>
+                            </accordion>            
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
     </form>
 </section>
