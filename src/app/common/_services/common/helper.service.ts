@@ -1,6 +1,7 @@
 import { AppConfig } from "@env/environment";
 import { templatePath } from '@assets/wizard/ngx/config-project/template-path';
 import * as _ from 'underscore';
+import * as lod_ from 'lodash';
 import { APP_VAL } from "@app/common/_const/app/app-val.const";
 
 
@@ -77,12 +78,34 @@ export class HelperService{
         return result;
     }
 
-    static getTemplatePath(type){
-        if(type && templatePath.hasOwnProperty(type)){
-            return templatePath[type]['template'];
+    static getTemplatePath(type,pickKey=''){
+        if(pickKey){
+            let pickedData = lod_.result(templatePath,pickKey);
+            if(lod_.isPlainObject(pickedData)){
+                return HelperService.getTemplateByType(pickedData,type);
+            }else if(lod_.isArray(pickedData)){
+                return HelperService.getTemplateByType(
+                                        lod_.chain(pickedData)
+                                        .map((item)=>{
+                                            return lod_.pick(item,type);
+                                        })
+                                        .head()
+                                        .value(),
+                                    type);  
+                            
+            }
+     
+        }else{
+            return HelperService.getTemplateByType(templatePath,type);
+        }
+        return null;   
+    }
+
+    static getTemplateByType(templateData,type){
+        if(type && templateData.hasOwnProperty(type)){
+            return templateData[type]['template'];
         }
         return null;
-        
     }
 
     static pathIncludes(seekArr,pathObj,type){
@@ -99,12 +122,12 @@ export class HelperService{
         return configObj.style;
     }
     
-    static addbyType(arr,seekArr,workspace,type){
+    static addbyType(arr,seekArr,workspace,type,ext=''){
         return arr.map((item)=>{
             return {
-                data:item.name,
-                label:item.name,
-                path:workspace + _.first(seekArr)+'/'+item.name,
+                data:item.name+ext,
+                label:item.name+ext,
+                path:workspace + _.first(seekArr)+'/'+item.name+ext,
                 type:type,
                 templateType:item.templateType,
                 children:[]

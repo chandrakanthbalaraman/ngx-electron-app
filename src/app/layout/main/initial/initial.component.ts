@@ -35,7 +35,7 @@ export class InitialComponent implements OnInit {
     private storageService: StorageService
   ) {
     this.ngSetup = this.formBuilder.group({
-      directory: ['D:\\dev\\learnings\\electron\\test'],
+      directory: ['F:\\chandru\\Learnings\\test'],
       workspace: ['newProj'],
       basicOptions: this.formBuilder.group({
         style: ['scss'],
@@ -175,7 +175,8 @@ export class InitialComponent implements OnInit {
 
   createRegex(){
     let configData = this.storageService.getItemStorage(APP_KEYS.CONFIG)
-    let constConfigArr = HelperService.addbyType(CUSTOM_CREATION.CONST_SECTION.CHILDREN,CUSTOM_CREATION.CONST_SECTION.PATH,configData.workspace,APP_VAL.SETUP.FILE)
+    const configCustom = CUSTOM_CREATION.CONST_SECTION;
+    let constConfigArr = HelperService.addbyType(configCustom.CHILDREN, configCustom.PATH, configData.workspace, APP_VAL.SETUP.FILE)
     HelperService.loggerService("constConfig",constConfigArr);
     let renderData = {
       valArr:this.regexArr,
@@ -192,7 +193,15 @@ export class InitialComponent implements OnInit {
   createStyleOptions(){
     let configData = this.storageService.getItemStorage(APP_KEYS.CONFIG)
     let formVal = this.ngSetup.getRawValue();
+    const configStyleMixins = CUSTOM_CREATION.STYLES_MIXINS_SECTION;
     if(formVal.styleOptions && formVal.styleOptions.createDefaultMixin && configData.basicOptions.style === 'scss'){
+      const styleProcess = '.'+HelperService.getStyleProcessing(configData.basicOptions);
+      let mixinsArr = HelperService.addbyType(configStyleMixins.CHILDREN, configStyleMixins.PATH, configData.workspace, APP_VAL.SETUP.FILE,styleProcess);
+      HelperService.loggerService("mixinsArr",mixinsArr);
+      for(let obj of mixinsArr){
+        this.projectService.writeFileSync(configData.directory + '\\',obj.path,HelperService.nunjuckRender(HelperService.getTemplatePath(obj.templateType,'styles.mixins')));
+      }
+      
       
     }
   }

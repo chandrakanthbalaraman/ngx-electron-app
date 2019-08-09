@@ -688,5 +688,20 @@ export var CUSTOM_CREATION = {
                 templateType:'const-file'
             }
         ]
+    },
+    STYLES_MIXINS_SECTION:{
+        PATH: SEEK_REF.STYLE_DIR_ABSTRACTION,
+        CHILDREN:[
+            {
+                name:'_array-map',
+                type:APP_VAL.SETUP.FILE,
+                templateType:'array-map'
+            },
+            {
+                name:'_box-shadow',
+                type:APP_VAL.SETUP.FILE,
+                templateType:'box-shadow'
+            }
+        ]
     }
 }
