@@ -31,5 +31,20 @@ export const templatePath = {
     },
     'const-file': {
         'template': 'assets/wizard/ngx/templates/_core/const-file.html'
+    },
+    'styles':{
+        'mixins':[
+            {
+                'array-map' : {
+                    'template': 'assets/wizard/ngx/templates/_core/styles/mixins/_array-map.html'
+                },
+                'box-shadow' : {
+                    'template': 'assets/wizard/ngx/templates/_core/styles/mixins/_box-shadow.html'
+                },
+                'font-size' : {
+                    'template': 'assets/wizard/ngx/templates/_core/styles/mixins/_font-size.html'
+                }
+            }
+        ]
     }
 }
