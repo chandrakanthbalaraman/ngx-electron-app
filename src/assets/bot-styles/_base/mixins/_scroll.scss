@@ -1,0 +1,18 @@
+
+$scroll-type: (
+  x: overflow-x,
+  y: overflow-y,
+  xy:overflow
+);
+
+/* ========================================================================== */
+/* Scroll */
+/* ========================================================================== */
+
+@mixin scroll($prop:null,$val: null){
+    @if map-has-key($scroll-type, $prop) {
+        #{map-get($scroll-type,$prop)} : $val;
+    } @else{
+        @error "`#{$val} is invalid value for `#{$prop}` property";
+    }
+}

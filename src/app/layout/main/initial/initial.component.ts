@@ -35,7 +35,7 @@ export class InitialComponent implements OnInit {
     private storageService: StorageService
   ) {
     this.ngSetup = this.formBuilder.group({
-      directory: ['F:\\chandru\\Learnings\\test'],
+      directory: ['D:\\dev\\learnings\\electron\\test'],
       workspace: ['newProj'],
       basicOptions: this.formBuilder.group({
         style: ['scss'],
@@ -127,7 +127,7 @@ export class InitialComponent implements OnInit {
   createCustomFolder(configData,projectpath) {
     const formDataVal = configData;
     const styleProcess = HelperService.getStyleProcessing(formDataVal.basicOptions);
-    let pathFlattenArr = HelperService.flattenNestedArray(GEN_PROJECT.ngCLIAppInfo, formDataVal.workspace).map((item, index) => {
+    let pathFlattenArr = HelperService.flattenNestedArray(HelperService.clone(GEN_PROJECT.ngCLIAppInfo), formDataVal.workspace).map((item, index) => {
         if (HelperService.pathIncludes(SEEK_REF.STYLE_DIR, item,APP_VAL.SETUP.FILE)) {
           item.data = item.data+'.'+styleProcess;
           item.label = item.label+'.'+styleProcess;

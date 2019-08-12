@@ -1,196 +1,171 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand" href="#">UI Bot</a>
-    <button class="btn btn-outline-success my-2 my-sm-0" (click)="createProject()">Submit</button>
+  <a class="navbar-brand" href="#">UI Bot</a>
+  <button class="btn btn-outline-primary my-2 my-sm-0" (click)="startProject()">Start Project</button>
 </nav>
 <section class="p-4">
-    <form [formGroup]="ngSetup">
-        <div class="row">
-                <div class="col-5">
-                    <div class="card ">
-                            <div class="card-header">
-                                Module
-                            </div>
-                            <div class="card-body">
-                                
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Project Directory</label>
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" formControlName="directory">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary" type="button" (click)="showDialog()">Browse</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Project Name</label>
-                                        <input type="text" class="form-control" formControlName="workspace">
-                                    </div>
-                            </div>
-                            
-                    </div>
+  <form [formGroup]="ngSetup">
+    <div class="row">
+      <div class="col-5">
+        <div class="card ">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            Module
+            <button class="btn btn-outline-success my-2 my-sm-0" (click)="createProject()">Submit</button>
+          </div>
+          <div class="card-body">
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Project Directory</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" formControlName="directory">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="showDialog()">Browse</button>
                 </div>
-                <div class="col-7">
-                        <div class="card ">
-                            <div class="card-header">
-                            Options
-                            </div>
-                            <div class="card-body">
-                                    <accordion [isAnimated]="true">
-                                            <accordion-group heading="Basic Options" [isOpen]="true">
-                                                <div formGroupName="basicOptions">
-                                                        <div class="form-group">
-                                                                <label>Style</label>
-                                                                <select class="form-control" formControlName="style">
-                                                                    <option [value]="'css'">CSS</option>
-                                                                    <option [value]="'less'">LESS</option>
-                                                                    <option [value]="'scss'">SCSS</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" formControlName="createApplication">
-                                                                    <label class="form-check-label" >
-                                                                            Create Application
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                        <input class="form-check-input" type="checkbox" formControlName="skipInstall">
-                                                                        <label class="form-check-label" >
-                                                                                Skip Install
-                                                                        </label>
-                                                                </div>
-                                                               
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" formControlName="skipGit">
-                                                                    <label class="form-check-label" >
-                                                                            Skip Git
-                                                                    </label>
-                                                                </div>
-                                                                    
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" formControlName="skipTests">
-                                                                    <label class="form-check-label" >
-                                                                            Skip Test
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" formControlName="force">
-                                                                    <label class="form-check-label" >
-                                                                            Force
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                </div>
-                                                
-                                            </accordion-group>
-                                             <accordion-group heading="Custom Options">
-                                                <div class="row mb-3">
-                                                    <div class="col-12 text-right">
-                                                        <button class="btn btn-outline-primary" (click)="createCustomStructure()">Create Custom Structure</button>
-                                                    </div>
-                                                </div> 
-                                                <div formGroupName="customOptions">
-                                                    <div class="form-group">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" formControlName="createCustomStructure">
-                                                            <label class="form-check-label" >
-                                                                Create Custom Folder Structure
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <div class="col-12 text-right">
-                                                            <button type="button" class="btn btn-primary" [disabled]="ngSetup.get('customOptions').get('layouts').invalid" (click)="createNewLayout()">Add New Layout</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" formArrayName="layouts" *ngFor="let item of ngSetup.get('customOptions').get('layouts').controls; let i = index;">
-                                                        <div class="row" [formGroupName]="i">
-                                                            <div class="col-6">
-                                                                <input formControlName="name" placeholder="Layout Name" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                                
-                                            </accordion-group>
-                                    </accordion>
-                                
-                            </div>
-                        </div>            
-                </div>
-        </div>
-        <div class="row my-4">
-            <div class="col-10">
-                <div class="card ">
-                    <div class="card-header">
-                        Const Options
-                    </div>
-                    <div class="card-body">
-                        <accordion [isAnimated]="true">
-                            <accordion-group heading="Basic Options" [isOpen]="true">
-                                <div class="row mb-3">
-                                    <div class="col-12 text-right">
-                                        <button class="btn btn-outline-primary" (click)="createRegex()">Create Regex</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-3 mb-3" *ngFor="let obj of regexArr">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" [checked]="obj.isActive" >
-                                            <label class="form-check-label" title="{{obj.regex}}">
-                                                <small>{{obj.name}}</small>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>    
-                            </accordion-group>
-                        </accordion>            
-                    
-                    </div>
-                </div>
+              </div>
             </div>
-        </div>
-        <div class="row my-4">
-                <div class="col-10">
-                    <div class="card ">
-                        <div class="card-header">
-                            Style Options
-                        </div>
-                        <div class="card-body">
-                            <accordion [isAnimated]="true">
-                                    <accordion-group heading="Style Options">
-                                            <div class="row mb-3">
-                                                    <div class="col-12 text-right">
-                                                        <button class="btn btn-outline-primary" (click)="createStyleOptions()">Create Style Options</button>
-                                                    </div>
-                                            </div>
-                                            <div formGroupName="styleOptions">
-                                                <div class="form-group">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" formControlName="createDefaultMixin">
-                                                        <label class="form-check-label" >
-                                                            Create Default Mixins Folder
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                            
-                                    </accordion-group>
-                            </accordion>            
-                        
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Project Name</label>
+              <input type="text" class="form-control" formControlName="workspace">
             </div>
-    </form>
+            <hr />
+            <div formGroupName="basicOptions">
+              <div class="form-group">
+                <label>Style</label>
+                <select class="form-control" formControlName="style">
+                  <option [value]="'css'">CSS</option>
+                  <option [value]="'less'">LESS</option>
+                  <option [value]="'scss'">SCSS</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="createApplication">
+                  <label class="form-check-label">
+                    Create Application
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="skipInstall">
+                  <label class="form-check-label">
+                    Skip Install
+                  </label>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="skipGit">
+                  <label class="form-check-label">
+                    Skip Git
+                  </label>
+                </div>
+
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="skipTests">
+                  <label class="form-check-label">
+                    Skip Test
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="force">
+                  <label class="form-check-label">
+                    Force
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="card ">
+          <div class="card-header">
+            Options
+          </div>
+          <div class="card-body">
+            <accordion [isAnimated]="true">
+              <accordion-group heading="Custom Options" [isOpen]="true">
+                <div class="row mb-3">
+                  <div class="col-12 text-right">
+                    <button class="btn btn-outline-primary" (click)="createCustomStructure()">Create Custom
+                      Structure</button>
+                  </div>
+                </div>
+                <div formGroupName="customOptions">
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" formControlName="createCustomStructure">
+                      <label class="form-check-label">
+                        Create Custom Folder Structure
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-12 text-right">
+                      <button type="button" class="btn btn-primary"
+                        [disabled]="ngSetup.get('customOptions').get('layouts').invalid" (click)="createNewLayout()">Add
+                        New Layout</button>
+                    </div>
+                  </div>
+                  <div class="form-group" formArrayName="layouts"
+                    *ngFor="let item of ngSetup.get('customOptions').get('layouts').controls; let i = index;">
+                    <div class="row" [formGroupName]="i">
+                      <div class="col-6">
+                        <input formControlName="name" placeholder="Layout Name" class="form-control">
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </accordion-group>
+              <accordion-group heading="Const Options">
+                <div class="row mb-3">
+                  <div class="col-12 text-right">
+                    <button class="btn btn-outline-primary" (click)="createRegex()">Create Regex</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3 mb-3" *ngFor="let obj of regexArr">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" [checked]="obj.isActive">
+                      <label class="form-check-label" title="{{obj.regex}}">
+                        <small>{{obj.name}}</small>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </accordion-group>
+              <accordion-group heading="Style Options">
+                <div class="row mb-3">
+                  <div class="col-12 text-right">
+                    <button class="btn btn-outline-primary" (click)="createStyleOptions()">Create Style Options</button>
+                  </div>
+                </div>
+                <div formGroupName="styleOptions">
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" formControlName="createDefaultMixin">
+                      <label class="form-check-label">
+                        Create Default Mixins Folder
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+
+              </accordion-group>
+            </accordion>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </section>

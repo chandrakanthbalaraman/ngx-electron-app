@@ -29,6 +29,10 @@ export class HelperService{
         }
     }
 
+    static clone(dataObj){
+        return dataObj ? JSON.parse(JSON.stringify(dataObj)) : dataObj;
+    }
+
     /**
      * 
      * @param path 
