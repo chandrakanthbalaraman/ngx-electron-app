@@ -1,5 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ElectronService } from 'ngx-electron';
 import { MAIN_MODULES_ARR } from '@app/common/_const/ngx/ngx-modules.const';
 import { HelperService } from '@app/common/_services/common/helper.service';
@@ -32,7 +33,9 @@ export class InitialComponent implements OnInit {
     private _electronService: ElectronService,
     private formBuilder: FormBuilder,
     private projectService: ProjectService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.ngSetup = this.formBuilder.group({
       directory: ['D:\\dev\\learnings\\electron\\test'],
@@ -206,5 +209,8 @@ export class InitialComponent implements OnInit {
     }
   }
 
+  startProject(){
+    this.router.navigate(['/page/workspace'])
+  }
 
 }

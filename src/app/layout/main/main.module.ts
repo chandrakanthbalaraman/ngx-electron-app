@@ -19,8 +19,12 @@ const routes: Routes = [
         loadChildren: './initial/initial.module#InitialModule',
       },
       {
+        path: 'workspace',
+        loadChildren: './workspace/workspace.module#WorkspaceModule',
+      },
+      {
         path: '',
-        redirectTo: 'initial'
+        redirectTo: APP_CONFIG.ROUTER.INITIAL_PAGE
 
       }
     ]

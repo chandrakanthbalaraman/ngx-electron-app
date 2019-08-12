@@ -1,0 +1,19 @@
+#app-aside-bar{
+    @include fixed($top:0,$left:0);
+    width: 250px;
+    height: 100%;
+    background-color: #FDFDFD;
+    border-right: 1px solid #EAE9EF;
+    ul{
+        padding: 10px 0;
+        li{
+            list-style: none;
+            padding: 10px 15px;
+            margin-bottom: 5px;
+            a{
+                
+            }
+            
+        }
+    }
+}
