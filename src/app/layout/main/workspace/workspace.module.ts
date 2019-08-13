@@ -8,6 +8,12 @@ const routes: Routes = [
   {
       path: '',
       component: WorkspaceComponent,
+      children:[
+        {
+          path: 'component',
+          loadChildren: './components/components.module#ComponentsModule',
+        }
+      ]
   }
 ]
 @NgModule({
